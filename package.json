@@ -1,18 +1,16 @@
 {
   "name": "cordova-plugin-hello",
   "version": "0.1.0",
-  "description": "A sample for a new cordova plugin",
+  "description": "A cordova plugin to make an app available in Android Auto.",
   "cordova": {
-    "id": "cordova-plugin-hello",
+    "id": "cordova-plugin-auto",
     "platforms": [
-      "android",
-      "ios",
-      "wp7"
+      "android"
     ]
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/don/cordova-plugin-hello.git"
+    "url": "git+https://github.com/pedravil/cordova-plugin-auto.git"
   },
   "keywords": [
     "cordova",
@@ -21,10 +19,7 @@
     "ecosystem:cordova",
     "cordova-android"
   ],
-  "author": "Don Coleman",
-  "license": "Apache-2",
-  "bugs": {
-    "url": "https://github.com/don/cordova-plugin-hello/issues"
-  },
-  "homepage": "https://github.com/don/cordova-plugin-hello#readme"
+  "author": "Bool",
+  "license": "Apache"
+  
 }
