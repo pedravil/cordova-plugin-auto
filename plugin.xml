@@ -18,7 +18,9 @@
     <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <meta-data android:name="com.google.android.gms.car.application" android:resource="@xml/automotive_app_desc"/>
     </config-file>
+    
+    <resource-file src="src/android/res/xml/automotive_app_desc.xml" target="res/xml/automotive_app_desc.xml" />
+    
   </platform>
-
 
 </plugin>
