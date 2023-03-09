@@ -1,5 +1,5 @@
 {
-  "name": "cordova-plugin-hello",
+  "name": "cordova-plugin-auto",
   "version": "0.1.0",
   "description": "A cordova plugin to make an app available in Android Auto.",
   "cordova": {
