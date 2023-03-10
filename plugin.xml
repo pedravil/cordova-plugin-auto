@@ -7,7 +7,7 @@
     <engine name="cordova" version=">=3.4.0"/>
   </engines>
 
-  <asset src="www/auto.js" target="auto.js"/>
+  <asset src="www/auto.js" target="js/auto.js"/>
 
   <js-module src="www/auto.js" name="auto">
     <clobbers target="auto" />
