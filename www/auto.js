@@ -1,7 +1,9 @@
 /*global cordova, module*/
 
 module.exports = {
-    init: function (name, successCallback, errorCallback) {
-        /* cordova.exec(successCallback, errorCallback, "Hello", "greet", [name]);*/
+    
+    AndroidAutoSendNotification: function(title, message) {
+        cordova.exec(null, null, 'AndroidAutoNotificationSender', 'sendNotification', [title, message]);
     }
+    
 };
