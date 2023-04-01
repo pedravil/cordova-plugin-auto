@@ -6,7 +6,7 @@ module.exports = {
         cordova.exec(null, null, 'AndroidAutoNotificationSender', 'sendNotification', [title, message]);
     },
 	
-	AndroidAutoStartVoiceInteraction: function() {
+		AndroidAutoStartVoiceInteraction: function() {
         cordova.exec(null, null, 'AndroidAutoSpeechAnswerRetriever', 'startVoiceActivity', []);
     },
 		
