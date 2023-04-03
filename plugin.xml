@@ -24,13 +24,13 @@
     
     <resource-file src="src/android/res/xml/automotive_app_desc.xml" target="res/xml/automotive_app_desc.xml" />
     
-    <feature name="AndroidAutoNotificationSender">
+    <!-- <feature name="AndroidAutoNotificationSender">
         <param name="android-package" value="android/AndroidAutoNotificationSender" />      
     </feature>
     
     <feature name="AndroidAutoSpeechAnswerRetriever">
         <param name="android-package" value="com.example.AndroidAutoSpeechAnswerRetriever" />
-    </feature>
+    </feature> -->
 
   </platform>
 
