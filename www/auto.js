@@ -12,6 +12,10 @@ module.exports = {
 		
     AndroidAutoGetSpeechAnswer: function(successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, 'AndroidAutoSpeechAnswerRetriever', 'getSpeechAnswer', []);
-    }
+    },
+	
+		IsAndroidAutoConnected: function(successCallback, errorCallback) {
+				cordova.exec(successCallback, errorCallback, "AndroidAutoConnectionChecker", "isConnected", []);
+		};
     
 };
