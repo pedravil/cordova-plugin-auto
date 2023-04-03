@@ -1,6 +1,8 @@
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import AndroidAutoNotificationSender;
+
 public class FirebaseCloudMessagingServiceListener extends FirebaseMessagingService {
 
     @Override
@@ -21,8 +23,10 @@ public class FirebaseCloudMessagingServiceListener extends FirebaseMessagingServ
     }
 
     private void showNotification(String title, String body, String imageUrl) {
-        // Implement the code to show a notification to the user.
-        // You can use the NotificationCompat.Builder class to create a notification.
-        // You can also use an external library like Picasso to load the image from the URL.
+        
+        AndroidAutoNotificationSender sendNotificationToAndroidAuto = new AndroidAutoNotificationSender ():
+        
+        sendNotificationToAndroidAuto.sendNotification(title, body);
+        
     }
 }
