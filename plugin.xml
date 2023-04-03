@@ -17,7 +17,6 @@
   <platform name="android">
 
     <config-file target="AndroidManifest.xml" parent="/manifest/application">
-        /* <uses-feature android:name="android.hardware.type.car" android:required="true" /> */
         <uses-library android:name="com.google.android.gms.car" android:required="true" />
 
         <meta-data android:name="com.google.android.gms.car.application" android:resource="@xml/automotive_app_desc"/>
