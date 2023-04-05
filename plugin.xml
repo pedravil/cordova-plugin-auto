@@ -11,7 +11,6 @@
 
   <js-module src="www/auto.js" name="auto">
         <clobbers target="auto" />
-        <clobbers target="cordova.plugins.auto" />
   </js-module>
 
   <platform name="android">
