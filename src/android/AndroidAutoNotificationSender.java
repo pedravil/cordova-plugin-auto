@@ -1,7 +1,18 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
+package com.AndroidAuto;
+
+import android.app.PendingIntent;
+import android.app.Service;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
+
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationCompat.CarExtender;
+import androidx.core.app.NotificationCompat.CarExtender.UnreadConversation;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.app.RemoteInput;
 
 public class AndroidAutoNotificationSender {
     private Context context;
