@@ -1,4 +1,4 @@
-package com.AndroidAuto;
+package com.androidauto;
 
 import android.app.PendingIntent;
 import android.app.Service;
@@ -14,33 +14,91 @@ import androidx.core.app.NotificationCompat.CarExtender.UnreadConversation;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.app.RemoteInput;
 
-public class AndroidAutoNotificationSender {
-    private Context context;
+public class AndroidAutoNotificationSender extends Service {
+    public static final String READ_ACTION =
+            "com.example.myapplication.ACTION_MESSAGE_READ";
+    public static final String REPLY_ACTION =
+            "com.example.myapplication.ACTION_MESSAGE_REPLY";
+    public static final String CONVERSATION_ID = "conversation_id";
+    public static final String EXTRA_VOICE_REPLY = "extra_voice_reply";
+    private static final String TAG = MyMessagingService.class.getSimpleName();
+    private final Messenger mMessenger = new Messenger(new IncomingHandler());
+    private NotificationManagerCompat mNotificationManager;
 
-    public AndroidAutoNotificationSender(Context context) {
-        this.context = context;
+    @Override
+    public void onCreate() {
+        mNotificationManager = NotificationManagerCompat.from(getApplicationContext());
     }
 
-    public void sendNotification(String title, String message) {
-        // Create a notification builder with the appropriate settings
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "channel_id")
-                .setSmallIcon(R.drawable.notification_icon)
-                .setContentTitle(title)
+    @Override
+    public IBinder onBind(Intent intent) {
+        return mMessenger.getBinder();
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        return START_STICKY;
+    }
+
+    private Intent createIntent(int conversationId, String action) {
+        return new Intent()
+                .addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES)
+                .setAction(action)
+                .putExtra(CONVERSATION_ID, conversationId);
+    }
+
+    private void sendNotification(int conversationId, String message,
+                                  String participant, long timestamp) {
+        // A pending Intent for reads
+        PendingIntent readPendingIntent = PendingIntent.getBroadcast(getApplicationContext(),
+                conversationId,
+                createIntent(conversationId, READ_ACTION),
+                PendingIntent.FLAG_UPDATE_CURRENT);
+
+        // Build a RemoteInput for receiving voice input in a Car Notification
+        RemoteInput remoteInput = new RemoteInput.Builder(EXTRA_VOICE_REPLY)
+                .setLabel("Reply by voice")
+                .build();
+
+        // Building a Pending Intent for the reply action to trigger
+        PendingIntent replyIntent = PendingIntent.getBroadcast(getApplicationContext(),
+                conversationId,
+                createIntent(conversationId, REPLY_ACTION),
+                PendingIntent.FLAG_UPDATE_CURRENT);
+
+        // Create the UnreadConversation and populate it with the participant name,
+        // read and reply intents.
+        UnreadConversation.Builder unreadConvBuilder =
+                new UnreadConversation.Builder(participant)
+                        .setLatestTimestamp(timestamp)
+                        .setReadPendingIntent(readPendingIntent)
+                        .setReplyAction(replyIntent, remoteInput);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext())
+                // Set the application notification icon:
+                //.setSmallIcon(R.drawable.notification_icon)
+
+                // Set the large icon, for example a picture of the other recipient of the message
+                //.setLargeIcon(personBitmap)
+
                 .setContentText(message)
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                .setAutoCancel(true);
+                .setWhen(timestamp)
+                .setContentTitle(participant)
+                .setContentIntent(readPendingIntent)
+                .extend(new CarExtender()
+                        .setUnreadConversation(unreadConvBuilder.build()));
 
-        // Create a bundle to hold the notification options
-        Bundle extras = new Bundle();
-        extras.putBoolean("android.support.v4.app.EXTRA_AUTO_HEADSUP", true);
-        extras.putString("android.support.v4.app.EXTRA_CONVERSATION_TITLE", title);
+        mNotificationManager.notify(conversationId, builder.build());
+    }
 
-        // Add the options to the builder
-        builder.addExtras(extras);
-
-        // Send the notification using the system's notification manager
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        notificationManager.notify(1, builder.build());
+    /**
+     * Handler of incoming messages from clients.
+     */
+    class IncomingHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            sendNotification(1, "This is a sample message", "John Doe",
+                    System.currentTimeMillis());
+        }
     }
 }
