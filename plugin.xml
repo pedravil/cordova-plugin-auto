@@ -24,9 +24,12 @@
     <resource-file src="src/android/res/xml/automotive_app_desc.xml" target="res/xml/automotive_app_desc.xml" />
     
     <source-file src="src/android/AndroidAutoConnectionChecker.java" target-dir="src/android"/>
+    
+    <!--
     <source-file src="src/android/AndroidAutoNotificationSender.java" target-dir="src/android"/>
     <source-file src="src/android/AndroidAutoSpeechAnswerRetriever.java" target-dir="src/android"/>
-
+    -->
+    
   </platform>
 
 </plugin>
