@@ -1,15 +1,15 @@
 /*global cordova, module*/
 
-module.exports = {
+exports.AndroidAutoSendNotification = function(successCallback, errorCallback, title, message) {
+	cordova.exec(successCallback, errorCallback, 'AndroidAutoNotificationSender', 'sendNotification', [title, message]);
+};
+
     
-    AndroidAutoSendNotification: function(title, message) {
-        cordova.exec(null, null, 'AndroidAutoNotificationSender', 'sendNotification', [title, message]);
-    },
-    AndroidAutoGetSpeechAnswer: function(successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, 'AndroidAutoSpeechAnswerRetriever', 'getSpeechAnswer', []);
-    },	
-	IsAndroidAutoConnected: function(successCallback, errorCallback) {
-			cordova.exec(successCallback, errorCallback, "AndroidAutoConnectionChecker", "isConnected", []);
-	}
-    
+exports.AndroidAutoGetSpeechAnswer = function(successCallback, errorCallback) {
+	cordova.exec(successCallback, errorCallback, 'AndroidAutoSpeechAnswerRetriever', 'getSpeechAnswer', []);
+};
+
+
+exports.IsAndroidAutoConnected =  function(successCallback, errorCallback) {
+	cordova.exec(successCallback, errorCallback, "AndroidAutoConnectionChecker", "isConnected", []);    
 };
