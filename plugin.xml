@@ -16,12 +16,16 @@
   <platform name="android">
 
     <config-file target="AndroidManifest.xml" parent="/manifest/application">
-        <!-- <uses-library android:name="com.google.android.gms.car" android:required="true" /> -->
-
-        <meta-data android:name="com.google.android.gms.car.application" android:resource="@xml/automotive_app_desc"/>
+         <meta-data android:name="com.google.android.gms.car.application" android:resource="@xml/automotive_app_desc"/>
     </config-file>
     
+    <framework custom="true" src="src/android/auto.gradle" type="gradleReference" />
+    
     <resource-file src="src/android/res/xml/automotive_app_desc.xml" target="res/xml/automotive_app_desc.xml" />
+    
+    <source-file src="src/android/AndroidAutoConnectionChecker.java" target-dir="src/android"/>
+    <source-file src="src/android/AndroidAutoNotificationSender.java" target-dir="src/android"/>
+    <source-file src="src/android/AndroidAutoSpeechAnswerRetriever.java" target-dir="src/android"/>
 
   </platform>
 
