@@ -21,7 +21,7 @@ public class AndroidAutoNotificationSender extends Service {
             "com.example.myapplication.ACTION_MESSAGE_REPLY";
     public static final String CONVERSATION_ID = "conversation_id";
     public static final String EXTRA_VOICE_REPLY = "extra_voice_reply";
-    private static final String TAG = MyMessagingService.class.getSimpleName();
+    private static final String TAG = AndroidAutoNotificationSender.class.getSimpleName();
     private final Messenger mMessenger = new Messenger(new IncomingHandler());
     private NotificationManagerCompat mNotificationManager;
 
