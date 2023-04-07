@@ -1,4 +1,4 @@
-package com.androidauto;
+package com.androidauto.messaging;
 
 import android.app.PendingIntent;
 import android.app.Service;
@@ -14,14 +14,12 @@ import androidx.core.app.NotificationCompat.CarExtender.UnreadConversation;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.app.RemoteInput;
 
-public class AndroidAutoNotificationSender extends Service {
-    public static final String READ_ACTION =
-            "com.example.myapplication.ACTION_MESSAGE_READ";
-    public static final String REPLY_ACTION =
-            "com.example.myapplication.ACTION_MESSAGE_REPLY";
+public class AndroidAutoNotificationService extends Service {
+    public static final String READ_ACTION = "com.androidauto.messaging.ACTION_MESSAGE_READ";
+    public static final String REPLY_ACTION = "com.androidauto.messaging.ACTION_MESSAGE_REPLY";
     public static final String CONVERSATION_ID = "conversation_id";
     public static final String EXTRA_VOICE_REPLY = "extra_voice_reply";
-    private static final String TAG = AndroidAutoNotificationSender.class.getSimpleName();
+    private static final String TAG = AndroidAutoNotificationService.class.getSimpleName();
     private final Messenger mMessenger = new Messenger(new IncomingHandler());
     private NotificationManagerCompat mNotificationManager;
 
