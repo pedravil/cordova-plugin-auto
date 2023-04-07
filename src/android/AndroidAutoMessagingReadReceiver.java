@@ -8,8 +8,8 @@ import androidx.core.app.NotificationManagerCompat;
 
 import android.util.Log;
 
-public class AndroidAutoMessagingReceiver extends BroadcastReceiver {
-    private static final String TAG = AndroidAutoMessagingReceiver.class.getSimpleName();
+public class AndroidAutoMessagingReadReceiver extends BroadcastReceiver {
+    private static final String TAG = AndroidAutoMessagingReadReceiver.class.getSimpleName();
 
     @Override
     public void onReceive(Context context, Intent intent) {
