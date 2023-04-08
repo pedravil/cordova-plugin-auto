@@ -29,6 +29,7 @@
                 <action android:name="com.androidauto.messaging.ACTION_MESSAGE_READ" />
             </intent-filter>
         </receiver>
+      
         <receiver
             android:name=".AndroidAutoMessagingReplyReceiver" android:exported="true">
             <intent-filter>
