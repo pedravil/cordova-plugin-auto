@@ -17,6 +17,23 @@
 
     <config-file target="AndroidManifest.xml" parent="/manifest/application">
          <meta-data android:name="com.google.android.gms.car.application" android:resource="@xml/automotive_app_desc"/>
+      
+      
+         <service android:name=".AndroidAutoMessagingService" android:exported="true" />
+
+        <receiver
+            android:name=".AndroidAutoMessagingReadReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="com.androidauto.messaging.ACTION_MESSAGE_READ" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".AndroidAutoMessagingReplyReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="com.androidauto.messaging.ACTION_MESSAGE_REPLY" />
+            </intent-filter>
+        </receiver>
+      
     </config-file>
     
     <framework custom="true" src="src/android/auto.gradle" type="gradleReference" />
