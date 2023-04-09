@@ -56,24 +56,24 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 
 		Intent intent = new Intent(getApplicationContext(), AndroidAutoMessagingService.class);
 
-        bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
+        	bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
 		
 		if (!isBound) return;
         
-        Message message = Message.obtain();
+        	Message message = Message.obtain();
         
-        Bundle bundle = new Bundle();
-        bundle.putString("MyString", "This is a message");
-        
-        message.setData(bundle);
-        
-        try {
-			
-        	androidAutoMessagingService.send(message);
-			
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+		Bundle bundle = new Bundle();
+		bundle.putString("MyString", "This is a message");
+
+		message.setData(bundle);
+
+		try {
+
+			androidAutoMessagingService.send(message);
+
+		} catch (RemoteException e) {
+		    e.printStackTrace();
+		}
 		
 	}
   
