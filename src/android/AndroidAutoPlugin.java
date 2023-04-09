@@ -63,7 +63,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
         Message message = Message.obtain();
         
         Bundle bundle = new Bundle();
-        bundle.putString("MyString", "Message Received");
+        bundle.putString("MyString", "This is a message");
         
         message.setData(bundle);
         
