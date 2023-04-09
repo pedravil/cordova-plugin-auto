@@ -31,11 +31,20 @@ import java.util.Set;
 public class AndroidAutoPlugin extends CordovaPlugin {
   
 	Messenger androidAutoMessagingService = null;
-    boolean isBound;
+	boolean isBound;
 	
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
+		if (action.equals("onWaitAnswerAndroidAuto")) {
+			this.waitAnswerAndroidAuto(callbackContext);
+			return true;
+		}
+		
+		if (action.equals("sendNotificationAndroidAuto")) {
+			this.sendNotificationAndroidAuto(callbackContext, args.getString(0), args.getString(1), args.getString(2));
+			return true;
+		}
 
 	}
 	
@@ -52,7 +61,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 		}
 	}
   
-	private void sendNotificationAndroidAuto(String conversationId, String title, String description, CallbackContext callbackContext) throws JSONException {
+	private void sendNotificationAndroidAuto(CallbackContext callbackContext, String conversationId, String title, String description) throws JSONException {
 
 		Intent intent = new Intent(getApplicationContext(), AndroidAutoMessagingService.class);
 
@@ -77,4 +86,8 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 		
 	}
   
+	private void waitAnswerAndroidAuto(CallbackContext callbackContext) {
+		
+	}
+	
 }
