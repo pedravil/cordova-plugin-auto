@@ -46,7 +46,8 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 			this.sendNotificationAndroidAuto(callbackContext, args.getString(0), args.getString(1), args.getString(2));
 			return true;
 		}
-
+		
+		return false;
 	}
 	
   	private ServiceConnection serviceConnection = new ServiceConnection() {
