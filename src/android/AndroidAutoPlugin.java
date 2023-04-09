@@ -53,13 +53,13 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 		public void onServiceConnected(ComponentName className, IBinder service) {
 			androidAutoMessagingService = new Messenger(service);
 			isBound = true;
-		};
+		}
 
 		public void onServiceDisconnected(ComponentName className) {
 			androidAutoMessagingService = null;
 			isBound = false;
-		};
-	}
+		}
+	};
   
 	private void sendNotificationAndroidAuto(CallbackContext callbackContext, String conversationId, String title, String description) throws JSONException {
 
