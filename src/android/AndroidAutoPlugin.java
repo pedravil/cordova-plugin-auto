@@ -64,9 +64,11 @@ public class AndroidAutoPlugin extends CordovaPlugin {
   
 	private void sendNotificationAndroidAuto(CallbackContext callbackContext, String conversationId, String title, String description) throws JSONException {
 
-		Intent intent = new Intent(getApplicationContext(), AndroidAutoMessagingService.class);
+		Context pluginContext = this.cordova.getActivity().getApplicationContext();
+		
+		Intent intent = new Intent(pluginContext, AndroidAutoMessagingService.class);
 
-        	bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
+        	pluginContext.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
 		
 		if (!isBound) return;
         
