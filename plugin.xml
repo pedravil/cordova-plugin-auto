@@ -48,7 +48,7 @@
     
     <resource-file src="src/android/res/xml/automotive_app_desc.xml" target="res/xml/automotive_app_desc.xml" />
     
-    <!-- <source-file src="src/android/AndroidAutoPlugin.java" target-dir="src/android"/> -->
+    <source-file src="src/android/AndroidAutoPlugin.java" target-dir="src/android"/>
     <source-file src="src/android/AndroidAutoMessagingService.java" target-dir="src/android"/>
     <source-file src="src/android/AndroidAutoMessagingReadReceiver.java" target-dir="src/android"/>
     <source-file src="src/android/AndroidAutoMessagingReplyReceiver.java" target-dir="src/android"/>
