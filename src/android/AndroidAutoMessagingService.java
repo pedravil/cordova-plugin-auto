@@ -95,10 +95,15 @@ public class AndroidAutoMessagingService extends Service {
      * Handler of incoming messages from clients.
      */
     class IncomingHandler extends Handler {
+        
         @Override
         public void handleMessage(Message msg) {
-            sendNotification(1, "This is a sample message", "John Doe",
-                    System.currentTimeMillis());
+            
+            Bundle data = msg.getData();
+            String dataString = data.getString("MyString");
+            
+            sendNotification(1, dataString, "John Doe", System.currentTimeMillis());
+            
         }
     }
 }
