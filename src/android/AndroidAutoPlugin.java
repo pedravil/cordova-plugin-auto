@@ -33,7 +33,7 @@ import java.util.Log;
 public class AndroidAutoPlugin extends CordovaPlugin {
   
 	private final static boolean DEBUG = true;
-	private final static boolean DEBUG_TAG = "AndroidAutoPlugin";
+	private final static String DEBUG_TAG = "AndroidAutoPlugin";
 	
 	
 	Messenger androidAutoMessagingService = null;
@@ -78,7 +78,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
         	pluginContext.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
 		
 		
-		If (DEBUG) Log.d(DEBUG_TAG, "isBound:" + isBound);
+		if (DEBUG) Log.d(DEBUG_TAG, "isBound: " + isBound);
 		
 		if (!isBound) return;
         
