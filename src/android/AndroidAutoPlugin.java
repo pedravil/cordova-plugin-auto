@@ -42,7 +42,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	boolean isBound;
 	
 	
-	public AndroidAutoPlugin {
+	public AndroidAutoPlugin() {
 		
 		Intent intent = new Intent(pluginContext, AndroidAutoMessagingService.class);
 
