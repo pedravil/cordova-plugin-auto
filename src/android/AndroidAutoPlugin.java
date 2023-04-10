@@ -27,10 +27,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.utils.Log;
 
 
 public class AndroidAutoPlugin extends CordovaPlugin {
   
+	private final static boolean DEBUG = true;
+	private final static boolean DEBUG_TAG = "AndroidAutoPlugin";
+	
+	
 	Messenger androidAutoMessagingService = null;
 	boolean isBound;
 	
@@ -49,6 +54,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 		
 		return false;
 	}
+	
 	
   	private ServiceConnection serviceConnection = new ServiceConnection() {
 		
@@ -70,6 +76,9 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 		Intent intent = new Intent(pluginContext, AndroidAutoMessagingService.class);
 
         	pluginContext.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
+		
+		
+		If (DEBUG) Log.d(DEBUG_TAG, "isBound:" + isBound);
 		
 		if (!isBound) return;
         
