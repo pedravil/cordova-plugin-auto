@@ -36,8 +36,19 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	private final static boolean DEBUG = true;
 	private final static String DEBUG_TAG = "AndroidAutoPlugin";
 	
+	private final Context pluginContext = this.cordova.getActivity().getApplicationContext();
+	
 	Messenger androidAutoMessagingService = null;
 	boolean isBound;
+	
+	
+	public AndroidAutoPlugin {
+		
+		Intent intent = new Intent(pluginContext, AndroidAutoMessagingService.class);
+
+        	pluginContext.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
+	}
+	
 	
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -69,14 +80,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 		}
 	};
   
-	private void sendNotificationAndroidAuto(CallbackContext callbackContext, String conversationId, String title, String description) throws JSONException {
-
-		Context pluginContext = this.cordova.getActivity().getApplicationContext();
-		
-		Intent intent = new Intent(pluginContext, AndroidAutoMessagingService.class);
-
-        	pluginContext.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
-		
+	private void sendNotificationAndroidAuto(CallbackContext callbackContext, String conversationId, String title, String body) throws JSONException {
 		
 		if (DEBUG) Log.d(DEBUG_TAG, "isBound: " + isBound);
 		
