@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" id="com.bool.plugins.auto" version="0.1.0">
 
-  <name>auto</name>
+  <name>AndroidAutoPlugin</name>
 
   <engines>
     <engine name="cordova" version=">=3.4.0"/>
   </engines>
 
-  <asset src="www/auto.js" target="js/auto.js"/>
+  <asset src="www/AndroidAutoPlugin.js" target="js/AndroidAutoPlugin.js"/>
 
-  <js-module src="www/auto.js" name="auto">
-         <clobbers target="cordova.plugins.Auto" />
+  <js-module src="www/AndroidAutoPlugin.js" name="AndroidAutoPlugin">
+         <clobbers target="cordova.plugins.AndroidAutoPlugin" />
   </js-module>
 
   <platform name="android">
