@@ -9,3 +9,7 @@ exports.sendNotificationAndroidAuto = function(conversationId, title, message, s
 exports.onWaitAnswerAndroidAuto = function(successCallback, errorCallback) {
 	exec(successCallback, errorCallback, PLUGIN_NAME, 'onWaitAnswerAndroidAuto', []);
 };
+
+exports.onTest = function(successCallback, errorCallback) {
+	exec(successCallback, errorCallback, PLUGIN_NAME, 'onTest', []);
+};
