@@ -36,7 +36,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	private final static boolean DEBUG = true;
 	private final static String DEBUG_TAG = "AndroidAutoPlugin";
 	
-	private final Context pluginContext = this.cordova.getActivity().getApplicationContext();
+	private Context pluginContext = null;
 	
 	Messenger androidAutoMessagingService = null;
 	boolean isBound;
@@ -44,9 +44,11 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	
 	public AndroidAutoPlugin() {
 		
-		Intent intent = new Intent(pluginContext, AndroidAutoMessagingService.class);
+		// pluginContext = this.cordova.getActivity().getApplicationContext();
+		
+		// Intent intent = new Intent(pluginContext, AndroidAutoMessagingService.class);
 
-        	pluginContext.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
+        	// pluginContext.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
 	}
 	
 	
@@ -63,7 +65,18 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 			return true;
 		}
 		
+		if (action.equals("onTest")) {
+			this.onTest(callbackContext);
+			return true;
+		}
+		
 		return false;
+	}
+
+
+	private void onTest(CallbackContext callbackContext){
+	
+	
 	}
 	
 	
