@@ -11,6 +11,8 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 
+import android.util.Log;
+
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.PluginResult;
@@ -27,14 +29,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.Log;
 
 
 public class AndroidAutoPlugin extends CordovaPlugin {
   
 	private final static boolean DEBUG = true;
 	private final static String DEBUG_TAG = "AndroidAutoPlugin";
-	
 	
 	Messenger androidAutoMessagingService = null;
 	boolean isBound;
