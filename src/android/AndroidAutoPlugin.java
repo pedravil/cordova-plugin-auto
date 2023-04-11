@@ -57,7 +57,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
-		if (action.equals("onWaitAnswerAndroidAuto")) {
+		/*if (action.equals("onWaitAnswerAndroidAuto")) {
 			this.waitAnswerAndroidAuto(callbackContext);
 			return true;
 		}
@@ -65,7 +65,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 		if (action.equals("sendNotificationAndroidAuto")) {
 			this.sendNotificationAndroidAuto(callbackContext, args.getString(0), args.getString(1), args.getString(2));
 			return true;
-		}
+		}*/
 		
 		if (action.equals("onTest")) {
 			this.onTest(callbackContext);
