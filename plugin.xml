@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" id="com.bool.plugins.auto" version="0.1.0">
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" id="com.androidauto.messaging" version="0.1.0">
 
   <name>AndroidAutoPlugin</name>
 
@@ -48,10 +48,10 @@
     
     <resource-file src="src/android/res/xml/automotive_app_desc.xml" target="res/xml/automotive_app_desc.xml" />
     
-    <source-file src="src/android/AndroidAutoPlugin.java" target-dir="src/android"/>
-    <source-file src="src/android/AndroidAutoMessagingService.java" target-dir="src/android"/>
-    <source-file src="src/android/AndroidAutoMessagingReadReceiver.java" target-dir="src/android"/>
-    <source-file src="src/android/AndroidAutoMessagingReplyReceiver.java" target-dir="src/android"/>
+    <source-file src="src/android/AndroidAutoPlugin.java" target-dir="com/androidauto/messaging"/>
+    <source-file src="src/android/AndroidAutoMessagingService.java" target-dir="com/androidauto/messaging"/>
+    <source-file src="src/android/AndroidAutoMessagingReadReceiver.java" target-dir="com/androidauto/messaging"/>
+    <source-file src="src/android/AndroidAutoMessagingReplyReceiver.java" target-dir="com/androidauto/messaging"/>
     
   </platform>
 
