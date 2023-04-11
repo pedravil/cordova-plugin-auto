@@ -42,7 +42,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	boolean isBound;
 	
 	
-	public AndroidAutoPlugin() {
+	/*public AndroidAutoPlugin() {
 		
 		if (DEBUG) Log.d(DEBUG_TAG, "Constructor ");
 		
@@ -51,7 +51,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 		// Intent intent = new Intent(pluginContext, AndroidAutoMessagingService.class);
 
         	// pluginContext.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
-	}
+	}*/
 	
 	
 	@Override
@@ -82,7 +82,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	}
 	
 	
-  	private ServiceConnection serviceConnection = new ServiceConnection() {
+  	/*private ServiceConnection serviceConnection = new ServiceConnection() {
 		
 		public void onServiceConnected(ComponentName className, IBinder service) {
 			androidAutoMessagingService = new Messenger(service);
@@ -120,6 +120,6 @@ public class AndroidAutoPlugin extends CordovaPlugin {
   
 	private void waitAnswerAndroidAuto(CallbackContext callbackContext) {
 		
-	}
+	}*/
 	
 }
