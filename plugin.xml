@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" id="androidauto-messaging" version="0.1.0">
 
-  <name>AndroidAutoPlugin</name>
+  <name>AndroidAuto Plugin</name>
 
   <engines>
     <engine name="cordova" version=">=3.4.0"/>
@@ -17,10 +17,10 @@
     
     <config-file parent="/*" target="res/xml/config.xml">
       
-		<feature name="AndroidAutoPlugin">
-			<param name="android-package" value="com.androidauto.messaging.AndroidAutoPlugin" />
-			<param name="onload" value="true" />
-		</feature>
+	<feature name="AndroidAutoPlugin">
+		<param name="android-package" value="com.androidauto.messaging.AndroidAutoPlugin" />
+		<param name="onload" value="true" />
+	</feature>
       
     </config-file>
     
