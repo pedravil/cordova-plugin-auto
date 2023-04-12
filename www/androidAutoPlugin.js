@@ -10,6 +10,6 @@ exports.sendNotification = function(conversationId, title, message, successCallb
 	exec(successCallback, errorCallback, PLUGIN_NAME, 'sendNotification', [conversationId, title, message]);
 };
 
-exports.onWaitAnswer = function(successCallback, errorCallback) {
-	exec(successCallback, errorCallback, PLUGIN_NAME, 'onWaitAnswer', []);
+exports.waitAnswer = function(successCallback, errorCallback) {
+	exec(successCallback, errorCallback, PLUGIN_NAME, 'waitAnswer', []);
 };
