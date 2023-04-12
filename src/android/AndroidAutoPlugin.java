@@ -46,11 +46,11 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 		
 		if (DEBUG) Log.d(DEBUG_TAG, "Constructor");
 		
-		// pluginContext = this.cordova.getActivity().getApplicationContext();
+		/pluginContext = this.cordova.getActivity().getApplicationContext();
 		
-		// Intent intent = new Intent(pluginContext, AndroidAutoMessagingService.class);
+		Intent intent = new Intent(pluginContext, AndroidAutoMessagingService.class);
 
-        	// pluginContext.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
+        	pluginContext.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
 	}
 	
 	
