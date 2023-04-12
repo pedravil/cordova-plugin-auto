@@ -52,7 +52,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
 		
-		if (DEBUG) Log.d(DEBUG_TAG, "Method:execute, action" + action);
+		if (DEBUG) Log.d(DEBUG_TAG, "Method: execute, action" + action);
 		
 		if (action.equals("initialize")) {
 			this.initialize(callbackContext);
@@ -74,15 +74,18 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	
   	private ServiceConnection serviceConnection = new ServiceConnection() {
 		
-		
-		if (DEBUG) Log.d(DEBUG_TAG, "Method:serviceConnection");
-		
 		public void onServiceConnected(ComponentName className, IBinder service) {
+			
+			if (DEBUG) Log.d(DEBUG_TAG, "Method: serviceConnection.onServiceConnected");
+			
 			androidAutoMessagingService = new Messenger(service);
 			isBound = true;
 		}
 
 		public void onServiceDisconnected(ComponentName className) {
+			
+			if (DEBUG) Log.d(DEBUG_TAG, "Method: serviceConnection.onServiceDisconnected");
+			
 			androidAutoMessagingService = null;
 			isBound = false;
 		}
@@ -90,7 +93,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	
 	private void initialize(CallbackContext callbackContext){
 	
-		if (DEBUG) Log.d(DEBUG_TAG, "Method:initialize");
+		if (DEBUG) Log.d(DEBUG_TAG, "Method: initialize");
 		
 		pluginContext = this.cordova.getActivity().getApplicationContext();
 		
@@ -103,7 +106,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
   
 	private void sendNotification(CallbackContext callbackContext, String conversationId, String title, String body) throws JSONException {
 		
-		if (DEBUG) Log.d(DEBUG_TAG, "Method:sendNotification");
+		if (DEBUG) Log.d(DEBUG_TAG, "Method: sendNotification");
 		
 		if (DEBUG) Log.d(DEBUG_TAG, "isBound: " + isBound);
 		
