@@ -75,7 +75,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
   	private ServiceConnection serviceConnection = new ServiceConnection() {
 		
 		
-		if (DEBUG) Log.d(DEBUG_TAG, "Method:serviceConnection);
+		if (DEBUG) Log.d(DEBUG_TAG, "Method:serviceConnection");
 		
 		public void onServiceConnected(ComponentName className, IBinder service) {
 			androidAutoMessagingService = new Messenger(service);
@@ -90,7 +90,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	
 	private void initialize(CallbackContext callbackContext){
 	
-		if (DEBUG) Log.d(DEBUG_TAG, "Method:initialize);
+		if (DEBUG) Log.d(DEBUG_TAG, "Method:initialize");
 		
 		pluginContext = this.cordova.getActivity().getApplicationContext();
 		
@@ -103,7 +103,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
   
 	private void sendNotification(CallbackContext callbackContext, String conversationId, String title, String body) throws JSONException {
 		
-		if (DEBUG) Log.d(DEBUG_TAG, "Method:sendNotification);
+		if (DEBUG) Log.d(DEBUG_TAG, "Method:sendNotification");
 		
 		if (DEBUG) Log.d(DEBUG_TAG, "isBound: " + isBound);
 		
