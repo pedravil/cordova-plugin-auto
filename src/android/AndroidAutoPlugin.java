@@ -42,16 +42,16 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	boolean isBound;
 	
 	
-	/*public AndroidAutoPlugin() {
+	public AndroidAutoPlugin() {
 		
-		if (DEBUG) Log.d(DEBUG_TAG, "Constructor ");
+		if (DEBUG) Log.d(DEBUG_TAG, "Constructor");
 		
 		// pluginContext = this.cordova.getActivity().getApplicationContext();
 		
 		// Intent intent = new Intent(pluginContext, AndroidAutoMessagingService.class);
 
         	// pluginContext.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
-	}*/
+	}
 	
 	
 	@Override
