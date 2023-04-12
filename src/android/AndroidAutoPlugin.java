@@ -51,35 +51,23 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
-		if (action.equals("onWaitAnswerAndroidAuto")) {
-			this.waitAnswerAndroidAuto(callbackContext);
+		if (action.equals("waitAnswer")) {
+			this.waitAnswer(callbackContext);
 			return true;
 		}
 		
-		if (action.equals("sendNotificationAndroidAuto")) {
-			this.sendNotificationAndroidAuto(callbackContext, args.getString(0), args.getString(1), args.getString(2));
+		if (action.equals("sendNotification")) {
+			this.sendNotification(callbackContext, args.getString(0), args.getString(1), args.getString(2));
 			return true;
 		}
 		
-		if (action.equals("setAndroidAuto")) {
-			this.setAndroidAuto(callbackContext);
+		if (action.equals("initialize")) {
+			this.initialize(callbackContext);
 			return true;
 		}
 		
 		return false;
 	}
-
-
-	private void setAndroidAuto(CallbackContext callbackContext){
-	
-		pluginContext = this.cordova.getActivity().getApplicationContext();
-		
-		Intent intent = new Intent(pluginContext, AndroidAutoMessagingService.class);
-
-        	pluginContext.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
-	
-	}
-	
 	
   	private ServiceConnection serviceConnection = new ServiceConnection() {
 		
@@ -93,8 +81,19 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 			isBound = false;
 		}
 	};
+	
+	private void initialize(CallbackContext callbackContext){
+	
+		pluginContext = this.cordova.getActivity().getApplicationContext();
+		
+		Intent intent = new Intent(pluginContext, AndroidAutoMessagingService.class);
+
+        	pluginContext.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
+	
+	}
+	
   
-	private void sendNotificationAndroidAuto(CallbackContext callbackContext, String conversationId, String title, String body) throws JSONException {
+	private void sendNotification(CallbackContext callbackContext, String conversationId, String title, String body) throws JSONException {
 		
 		if (DEBUG) Log.d(DEBUG_TAG, "isBound: " + isBound);
 		
@@ -117,7 +116,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 		
 	}
   
-	private void waitAnswerAndroidAuto(CallbackContext callbackContext) {
+	private void waitAnswer(CallbackContext callbackContext) {
 		
 	}
 	
