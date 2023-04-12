@@ -2,14 +2,14 @@ var exec = require('cordova/exec');
 
 var PLUGIN_NAME = 'AndroidAutoPlugin';
 
-exports.setAndroidAuto = function(successCallback, errorCallback) {
-	exec(successCallback, errorCallback, PLUGIN_NAME, 'setAndroidAuto', []);
+exports.initialize = function(successCallback, errorCallback) {
+	exec(successCallback, errorCallback, PLUGIN_NAME, 'initialize', []);
 };
 
-exports.sendNotificationAndroidAuto = function(conversationId, title, message, successCallback, errorCallback) {
-	exec(successCallback, errorCallback, PLUGIN_NAME, 'sendNotificationAndroidAuto', [conversationId, title, message]);
+exports.sendNotification = function(conversationId, title, message, successCallback, errorCallback) {
+	exec(successCallback, errorCallback, PLUGIN_NAME, 'sendNotification', [conversationId, title, message]);
 };
 
-exports.onWaitAnswerAndroidAuto = function(successCallback, errorCallback) {
-	exec(successCallback, errorCallback, PLUGIN_NAME, 'onWaitAnswerAndroidAuto', []);
+exports.onWaitAnswer = function(successCallback, errorCallback) {
+	exec(successCallback, errorCallback, PLUGIN_NAME, 'onWaitAnswer', []);
 };
