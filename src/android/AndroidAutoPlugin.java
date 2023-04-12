@@ -52,7 +52,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
 		
-		if (DEBUG) Log.d(DEBUG_TAG, "Method: execute, action" + action);
+		if (DEBUG) Log.d(DEBUG_TAG, "Method: execute: " + action);
 		
 		if (action.equals("initialize")) {
 			this.initialize(callbackContext);
