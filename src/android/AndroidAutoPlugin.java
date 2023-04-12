@@ -61,8 +61,8 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 			return true;
 		}
 		
-		if (action.equals("set")) {
-			this.set(callbackContext);
+		if (action.equals("setAndroidAuto")) {
+			this.setAndroidAuto(callbackContext);
 			return true;
 		}
 		
@@ -70,7 +70,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	}
 
 
-	private void set(CallbackContext callbackContext){
+	private void setAndroidAuto(CallbackContext callbackContext){
 	
 		pluginContext = this.cordova.getActivity().getApplicationContext();
 		
