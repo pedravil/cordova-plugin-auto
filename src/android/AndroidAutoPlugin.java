@@ -45,12 +45,6 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	public AndroidAutoPlugin() {
 		
 		if (DEBUG) Log.d(DEBUG_TAG, "Constructor");
-		
-		//pluginContext = this.cordova.getActivity().getApplicationContext();
-		
-		//Intent intent = new Intent(pluginContext, AndroidAutoMessagingService.class);
-
-        	//pluginContext.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
 	}
 	
 	
@@ -67,8 +61,8 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 			return true;
 		}
 		
-		if (action.equals("onTest")) {
-			this.onTest(callbackContext);
+		if (action.equals("set")) {
+			this.set(callbackContext);
 			return true;
 		}
 		
@@ -76,8 +70,13 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	}
 
 
-	private void onTest(CallbackContext callbackContext){
+	private void set(CallbackContext callbackContext){
 	
+		pluginContext = this.cordova.getActivity().getApplicationContext();
+		
+		Intent intent = new Intent(pluginContext, AndroidAutoMessagingService.class);
+
+        	pluginContext.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
 	
 	}
 	
