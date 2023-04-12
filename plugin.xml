@@ -35,17 +35,17 @@
       
         <meta-data android:name="com.google.android.gms.car.application" android:resource="@xml/automotive_app_desc"/>
       
-        <service android:name=".AndroidAutoMessagingService" android:exported="true" />
+        <service android:name="com.androidauto.messaging.AndroidAutoMessagingService" android:exported="true" android:enabled="true"/>
 
         <receiver
-            android:name=".AndroidAutoMessagingReadReceiver" android:exported="true">
+            android:name="com.androidauto.messaging.AndroidAutoMessagingReadReceiver" android:exported="true">
             <intent-filter>
                 <action android:name="com.androidauto.messaging.ACTION_MESSAGE_READ" />
             </intent-filter>
         </receiver>
       
         <receiver
-            android:name=".AndroidAutoMessagingReplyReceiver" android:exported="true">
+            android:name="com.androidauto.messaging.AndroidAutoMessagingReplyReceiver" android:exported="true">
             <intent-filter>
                 <action android:name="com.androidauto.messaging.ACTION_MESSAGE_REPLY" />
             </intent-filter>
