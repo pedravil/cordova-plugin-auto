@@ -54,7 +54,7 @@ public class AndroidAutoMessagingService extends Service {
         PendingIntent readPendingIntent = PendingIntent.getBroadcast(getApplicationContext(),
                 conversationId,
                 createIntent(conversationId, READ_ACTION),
-                PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent.FLAG_IMMUTABLE);
 
         // Build a RemoteInput for receiving voice input in a Car Notification
         RemoteInput remoteInput = new RemoteInput.Builder(EXTRA_VOICE_REPLY)
@@ -65,7 +65,7 @@ public class AndroidAutoMessagingService extends Service {
         PendingIntent replyIntent = PendingIntent.getBroadcast(getApplicationContext(),
                 conversationId,
                 createIntent(conversationId, REPLY_ACTION),
-                PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent.FLAG_IMMUTABLE);
 
         // Create the UnreadConversation and populate it with the participant name,
         // read and reply intents.
