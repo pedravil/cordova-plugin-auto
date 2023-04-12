@@ -17,10 +17,10 @@
     
     <config-file parent="/*" target="res/xml/config.xml">
       
-      <!--<feature name="AndroidAutoPlugin">
-        <param name="android-package" value="com.androidauto.messaging.AndroidAutoPlugin" />
-        <param name="onload" value="true" />
-      </feature>-->
+		<feature name="AndroidAutoPlugin">
+			<param name="android-package" value="com.androidauto.messaging.AndroidAutoPlugin" />
+			<param name="onload" value="true" />
+		</feature>
       
     </config-file>
     
