@@ -2,8 +2,8 @@ var exec = require('cordova/exec');
 
 var PLUGIN_NAME = 'AndroidAutoPlugin';
 
-exports.set = function(successCallback, errorCallback) {
-	exec(successCallback, errorCallback, PLUGIN_NAME, 'set', []);
+exports.setAndroidAuto = function(successCallback, errorCallback) {
+	exec(successCallback, errorCallback, PLUGIN_NAME, 'setAndroidAuto', []);
 };
 
 exports.sendNotificationAndroidAuto = function(conversationId, title, message, successCallback, errorCallback) {
