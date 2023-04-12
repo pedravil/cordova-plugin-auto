@@ -7,9 +7,9 @@
     <engine name="cordova" version=">=3.4.0"/>
   </engines>
 
-  <asset src="www/AndroidAutoPlugin.js" target="js/AndroidAutoPlugin.js"/>
+  <asset src="www/androidAutoPlugin.js" target="js/androidAutoPlugin.js"/>
 
-  <js-module src="www/AndroidAutoPlugin.js" name="AndroidAutoPlugin">
+  <js-module src="www/androidAutoPlugin.js" name="AndroidAutoPlugin">
          <clobbers target="cordova.plugins.AndroidAutoPlugin" />
   </js-module>
 
