@@ -93,8 +93,8 @@ public class AndroidAutoMessagingService extends Service {
                         .setReadPendingIntent(readPendingIntent)
                         .setReplyAction(replyIntent, remoteInput);
         
-        String channelId = this.getStringResource("default_notification_channel_id");
-        String channelName = this.getStringResource("default_notification_channel_name");
+        String channelId = this.getStringResource("default_aa_notification_channel_id");
+        String channelName = this.getStringResource("default_aa_notification_channel_name");
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), channelId)
                 // Set the application notification icon:
