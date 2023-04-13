@@ -114,20 +114,20 @@ public class AndroidAutoMessagingService extends Service {
 
         // Since android Oreo notification channel is needed.
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-          List<NotificationChannel> channels = notificationManager.getNotificationChannels();
+              List<NotificationChannel> channels = notificationManager.getNotificationChannels();
 
-          boolean channelExists = false;
-          for (int i = 0; i < channels.size(); i++) {
-            if (channelId.equals(channels.get(i).getId())) {
-              channelExists = true;
-            }
-          }
+              boolean channelExists = false;
+              for (int i = 0; i < channels.size(); i++) {
+                    if (channelId.equals(channels.get(i).getId())) {
+                      channelExists = true;
+                    }
+              }
 
-          if (!channelExists) {
-            NotificationChannel channel = new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH);
-            
-            mNotificationManager.createNotificationChannel(channel);
-          }
+              if (!channelExists) {
+                    NotificationChannel channel = new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH);
+
+                    mNotificationManager.createNotificationChannel(channel);
+              }
         }
         
         mNotificationManager.notify(conversationId, builder.build());
