@@ -25,6 +25,22 @@ public class AndroidAutoMessagingService extends Service {
     private static final String TAG = AndroidAutoMessagingService.class.getSimpleName();
     private final Messenger mMessenger = new Messenger(new IncomingHandler());
     private NotificationManagerCompat mNotificationManager;
+    
+    /**
+    * Handler of incoming messages from clients.
+    */
+    class IncomingHandler extends Handler {
+        
+        @Override
+        public void handleMessage(Message msg) {
+            
+            Bundle data = msg.getData();
+            String dataString = data.getString("MyString");
+            
+            sendNotification(1, dataString, "John Doe", System.currentTimeMillis());
+            
+        }
+    }    
 
     @Override
     public void onCreate() {
@@ -90,21 +106,5 @@ public class AndroidAutoMessagingService extends Service {
                         .setUnreadConversation(unreadConvBuilder.build()));
 
         mNotificationManager.notify(conversationId, builder.build());
-    }
-
-    /**
-     * Handler of incoming messages from clients.
-     */
-    class IncomingHandler extends Handler {
-        
-        @Override
-        public void handleMessage(Message msg) {
-            
-            Bundle data = msg.getData();
-            String dataString = data.getString("MyString");
-            
-            sendNotification(1, dataString, "John Doe", System.currentTimeMillis());
-            
-        }
     }
 }
