@@ -56,6 +56,7 @@
     <framework custom="true" src="src/android/auto.gradle" type="gradleReference" />
     
     <resource-file src="src/android/res/xml/automotive_app_desc.xml" target="res/xml/automotive_app_desc.xml" />
+	<resource-file src="src/android/cordova-plugin-auto-strings.xml" target="res/values/cordova-plugin-auto-strings.xml" />
     
     <source-file src="src/android/AndroidAutoPlugin.java" target-dir="com/androidauto/messaging"/>
     <source-file src="src/android/AndroidAutoMessagingService.java" target-dir="com/androidauto/messaging"/>
