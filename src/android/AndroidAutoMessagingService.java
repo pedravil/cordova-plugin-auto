@@ -17,6 +17,8 @@ import androidx.core.app.NotificationCompat.CarExtender.UnreadConversation;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.app.RemoteInput;
 
+import java.util.List;
+
 public class AndroidAutoMessagingService extends Service {
     
     public static final String READ_ACTION = "com.androidauto.messaging.ACTION_MESSAGE_READ";
