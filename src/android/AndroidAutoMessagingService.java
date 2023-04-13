@@ -1,5 +1,7 @@
 package com.androidauto.messaging;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
@@ -81,7 +83,7 @@ public class AndroidAutoMessagingService extends Service {
         PendingIntent replyIntent = PendingIntent.getBroadcast(getApplicationContext(),
                 conversationId,
                 createIntent(conversationId, REPLY_ACTION),
-                PendingIntent.FLAG_IMMUTABLE);
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         // Create the UnreadConversation and populate it with the participant name,
         // read and reply intents.
@@ -90,8 +92,11 @@ public class AndroidAutoMessagingService extends Service {
                         .setLatestTimestamp(timestamp)
                         .setReadPendingIntent(readPendingIntent)
                         .setReplyAction(replyIntent, remoteInput);
+        
+        String channelId = this.getStringResource("default_notification_channel_id");
+        String channelName = this.getStringResource("default_notification_channel_name");
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext())
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), channelId)
                 // Set the application notification icon:
                 .setSmallIcon(getApplicationInfo().icon)
 
@@ -104,7 +109,27 @@ public class AndroidAutoMessagingService extends Service {
                 .setContentIntent(readPendingIntent)
                 .extend(new CarExtender()
                         .setUnreadConversation(unreadConvBuilder.build()));
+        
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
+        // Since android Oreo notification channel is needed.
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+          List<NotificationChannel> channels = notificationManager.getNotificationChannels();
+
+          boolean channelExists = false;
+          for (int i = 0; i < channels.size(); i++) {
+            if (channelId.equals(channels.get(i).getId())) {
+              channelExists = true;
+            }
+          }
+
+          if (!channelExists) {
+            NotificationChannel channel = new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH);
+            
+            mNotificationManager.createNotificationChannel(channel);
+          }
+        }
+        
         mNotificationManager.notify(conversationId, builder.build());
     }
 }
