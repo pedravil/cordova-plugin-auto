@@ -66,6 +66,10 @@ public class AndroidAutoMessagingService extends Service {
                 .putExtra(CONVERSATION_ID, conversationId);
     }
 
+    private String getStringResource(String name) {
+        return this.getString(this.getResources().getIdentifier(name, "string", this.getPackageName()));
+    }
+
     private void sendNotification(int conversationId, String message,
                                   String participant, long timestamp) {
         // A pending Intent for reads
