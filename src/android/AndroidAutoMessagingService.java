@@ -109,8 +109,6 @@ public class AndroidAutoMessagingService extends Service {
                 .setContentIntent(readPendingIntent)
                 .extend(new CarExtender()
                         .setUnreadConversation(unreadConvBuilder.build()));
-        
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         // Since android Oreo notification channel is needed.
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
