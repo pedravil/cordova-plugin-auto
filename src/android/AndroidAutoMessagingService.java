@@ -77,7 +77,7 @@ public class AndroidAutoMessagingService extends Service {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext())
                 // Set the application notification icon:
-                //.setSmallIcon(R.drawable.notification_icon)
+                .setSmallIcon(getApplicationInfo().icon)
 
                 // Set the large icon, for example a picture of the other recipient of the message
                 //.setLargeIcon(personBitmap)
