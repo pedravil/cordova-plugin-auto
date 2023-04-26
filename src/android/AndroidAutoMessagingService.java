@@ -113,7 +113,10 @@ public class AndroidAutoMessagingService extends Service {
                 .setWhen(timestamp)
                 .setContentTitle(participant)
                 .setContentIntent(readPendingIntent)
-                .setStyle(new NotificationCompat.InboxStyle()).setTimeoutAfter(10000).setContentText("Hello").addPerson(new Person.Builder().build()).build()
+                .setStyle(new NotificationCompat.InboxStyle())
+                        .setTimeoutAfter(10000)
+                        .setContentText("Hello")
+                        //.addPerson(new Person.Builder().build()).build()
                 .extend(new CarExtender()
                         .setUnreadConversation(unreadConvBuilder.build()));
         
