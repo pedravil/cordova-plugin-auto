@@ -14,6 +14,7 @@ import android.os.Bundle;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationCompat.CarExtender;
 import androidx.core.app.NotificationCompat.CarExtender.UnreadConversation;
+import androidx.core.app.NotificationCompat.MessagingStyle.Message;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.app.RemoteInput;
 
@@ -78,7 +79,7 @@ public class AndroidAutoMessagingService extends Service {
         PendingIntent readPendingIntent = PendingIntent.getBroadcast(getApplicationContext(),
                 conversationId,
                 createIntent(conversationId, READ_ACTION),
-                PendingIntent.FLAG_IMMUTABLE);
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         // Build a RemoteInput for receiving voice input in a Car Notification
         RemoteInput remoteInput = new RemoteInput.Builder(EXTRA_VOICE_REPLY)
@@ -113,9 +114,10 @@ public class AndroidAutoMessagingService extends Service {
                 .setWhen(timestamp)
                 .setContentTitle(participant)
                 .setContentIntent(readPendingIntent)
+                .setStyle(new NotificationCompat.InboxStyle()).setTimeoutAfter(10000).setContentText("Hello").addPerson(new Person.Builder().build()).build();
                 .extend(new CarExtender()
                         .setUnreadConversation(unreadConvBuilder.build()));
-
+        
         // Since android Oreo notification channel is needed.
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
               List<NotificationChannel> channels = mNotificationManager.getNotificationChannels();
