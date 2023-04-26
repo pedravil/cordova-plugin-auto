@@ -72,8 +72,8 @@ public class AndroidAutoMessagingService extends Service {
         return this.getString(this.getResources().getIdentifier(name, "string", this.getPackageName()));
     }
 
-    private void sendNotification(int conversationId, String message,
-                                  String participant, long timestamp) {
+    private void sendNotification(int conversationId, String message, String participant, long timestamp) {
+        
         // A pending Intent for reads
         PendingIntent readPendingIntent = PendingIntent.getBroadcast(getApplicationContext(),
                 conversationId,
