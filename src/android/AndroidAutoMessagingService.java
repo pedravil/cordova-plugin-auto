@@ -13,6 +13,7 @@ import android.os.Messenger;
 import android.os.Bundle;
 
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationCompat.MessagingStyle;
 import androidx.core.app.NotificationCompat.CarExtender;
 import androidx.core.app.NotificationCompat.CarExtender.UnreadConversation;
 import androidx.core.app.NotificationManagerCompat;
