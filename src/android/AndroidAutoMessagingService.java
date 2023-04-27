@@ -102,9 +102,9 @@ public class AndroidAutoMessagingService extends Service {
 
     }
 
-    private Action replyAction(){
+    private Action createReplyAction(String conversationId){
 
-        return Action.Builder(R.drawable.reply, "Reply", replyPendingIntent())
+        return Action.Builder(R.drawable.reply, "Reply", replyPendingIntent(conversationId))
                                 // Provides context to what firing the Action does.
                                 .setSemanticAction(Action.SEMANTIC_ACTION_REPLY)
 
@@ -118,15 +118,15 @@ public class AndroidAutoMessagingService extends Service {
                                 .build();
     }
 
-    private Action markAsReadAction(){
+    private Action createMarkAsReadAction(String conversationId){
 
-        return Action.Builder(R.drawable.mark_as_read, "Mark as Read", markAsReadPendingIntent())
+        return Action.Builder(R.drawable.mark_as_read, "Mark as Read", markAsReadPendingIntent(conversationId))
                                 .setSemanticAction(Action.SEMANTIC_ACTION_MARK_AS_READ)
                                 .setShowsUserInterface(false)
                                 .build();
     }
 
-    private MessageSMessagingStyletyle createMessagingStyle(String message){
+    private MessagingStyle createMessagingStyle(){
 
         Person devicePerson = Person.Builder()
                                 // The display name (also the name that's read aloud in Android auto).
@@ -169,14 +169,12 @@ public class AndroidAutoMessagingService extends Service {
 
     private void sendNotification(int conversationId, String message, String participant, long timestamp) {
         
-        // // Create the UnreadConversation and populate it with the participant name,
-        // // read and reply intents.
-        // UnreadConversation.Builder unreadConvBuilder =
-        //         new UnreadConversation.Builder(participant)
-        //                 .setLatestTimestamp(timestamp)
-        //                 .setReadPendingIntent(readPendingIntent)
-        //                 .setReplyAction(replyIntent, remoteInput);
+
+        Action replyAction = createReplyAction(conversationId);
+        Action markAsReadAction = createMarkAsReadAction(conversationId);
+        MessagingStyle messagingStyle = createMessagingStyle();
         
+
         String channelId = this.getStringResource("default_aa_notification_channel_id");
         String channelName = this.getStringResource("default_aa_notification_channel_name");
 
@@ -184,19 +182,22 @@ public class AndroidAutoMessagingService extends Service {
                 // Set the application notification icon:
                 .setSmallIcon(getApplicationInfo().icon)
 
-                // Set the large icon, for example a picture of the other recipient of the message
-                //.setLargeIcon(personBitmap)
+                // Shows in Android Auto as the conversation image.
+                .setLargeIcon(getApplicationInfo().icon)
 
-                .setContentText(message)
-                .setWhen(timestamp)
-                .setContentTitle(participant)
-                .setContentIntent(readPendingIntent)
-                .setStyle(new NotificationCompat.InboxStyle())
-                        .setTimeoutAfter(10000)
-                        .setContentText("Hello")
-                        //.addPerson(new Person.Builder().build()).build()
-                .extend(new CarExtender()
-                        .setUnreadConversation(unreadConvBuilder.build()));
+                // Adds MessagingStyle.
+                .setStyle(messagingStyle)
+
+                // Adds reply action.
+                .addAction(replyAction)
+
+                // Makes the mark-as-read action invisible, so it doesn't appear
+                // in the Android UI but the app satisfies Android Auto's
+                // mark-as-read Action requirement. Both required actions can be made
+                // visible or invisible; it is a stylistic choice.
+                .addInvisibleAction(markAsReadAction)
+
+                .build();
         
         // Since android Oreo notification channel is needed.
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
