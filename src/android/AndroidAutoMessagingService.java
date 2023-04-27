@@ -134,10 +134,13 @@ public class AndroidAutoMessagingService extends Service {
 
     private Action createMarkAsReadAction(String conversationId){
 
-        return Action.Builder(R.drawable.ic_secure, "Mark as Read", markAsReadPendingIntent(conversationId, 1))
-                                .setSemanticAction(Action.SEMANTIC_ACTION_MARK_AS_READ)
-                                .setShowsUserInterface(false)
-                                .build();
+        Action action = new Action.Builder(R.drawable.ic_secure, "Mark as Read", markAsReadPendingIntent(conversationId, 1))
+                                    .setSemanticAction(Action.SEMANTIC_ACTION_MARK_AS_READ)
+                                    .setShowsUserInterface(false)
+                                    .build();
+
+
+        return action;
     }
 
     private MessagingStyle createMessagingStyle(){
