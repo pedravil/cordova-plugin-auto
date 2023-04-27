@@ -115,23 +115,26 @@ public class AndroidAutoMessagingService extends Service {
 
     private Action createReplyAction(String conversationId){
 
-        return Action.Builder(R.drawable.reply, "Reply", replyPendingIntent(conversationId, 1))
-                                // Provides context to what firing the Action does.
-                                .setSemanticAction(Action.SEMANTIC_ACTION_REPLY)
+        
+        Action action = new Action.Builder(R.drawable.ic_menu_add, "Reply", replyPendingIntent(conversationId, 1))
+                                            // Provides context to what firing the Action does.
+                                            .setSemanticAction(Action.SEMANTIC_ACTION_REPLY)
 
-                                // The action doesn't show any UI, as required by Android Auto.
-                                .setShowsUserInterface(false)
+                                            // The action doesn't show any UI, as required by Android Auto.
+                                            .setShowsUserInterface(false)
 
-                                // Don't forget the reply RemoteInput. Android Auto will use this to
-                                // make a system call that will add the response string into
-                                // the reply intent so it can be extracted by the messaging app.
-                                .addRemoteInput(createReplyRemoteInput())
-                                .build();
+                                            // Don't forget the reply RemoteInput. Android Auto will use this to
+                                            // make a system call that will add the response string into
+                                            // the reply intent so it can be extracted by the messaging app.
+                                            .addRemoteInput(createReplyRemoteInput())
+                                            .build();
+        
+        return action;
     }
 
     private Action createMarkAsReadAction(String conversationId){
 
-        return Action.Builder(R.drawable.mark_as_read, "Mark as Read", markAsReadPendingIntent(conversationId, 1))
+        return Action.Builder(R.drawable.ic_secure, "Mark as Read", markAsReadPendingIntent(conversationId, 1))
                                 .setSemanticAction(Action.SEMANTIC_ACTION_MARK_AS_READ)
                                 .setShowsUserInterface(false)
                                 .build();
