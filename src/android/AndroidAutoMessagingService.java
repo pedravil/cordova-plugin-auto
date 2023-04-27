@@ -24,9 +24,8 @@ import androidx.core.app.RemoteInput;
 
 import android.R;
 
-
-
 import java.util.List;
+
 
 public class AndroidAutoMessagingService extends Service {
     
