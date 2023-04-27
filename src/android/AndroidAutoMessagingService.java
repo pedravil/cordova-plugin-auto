@@ -72,7 +72,7 @@ public class AndroidAutoMessagingService extends Service {
         return this.getString(this.getResources().getIdentifier(name, "string", this.getPackageName()));
     }
 
-    private Intent createIntent(int conversationId, String action) {
+    private Intent createIntent(String conversationId, String action) {
         
         return new Intent()
                 .addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES)
