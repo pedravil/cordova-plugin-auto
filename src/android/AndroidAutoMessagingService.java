@@ -101,11 +101,11 @@ public class AndroidAutoMessagingService extends Service {
 
     }
 
-    private PendingIntent markAsReadPendingIntent(String conversationId){
+    private PendingIntent markAsReadPendingIntent(String conversationId, int requestCode){
 
          // A pending Intent for reads
          return PendingIntent.getBroadcast(getApplicationContext(),
-                                            conversationId,
+                                            requestCode,
                                             createIntent(conversationId, READ_ACTION),
                                             PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
@@ -129,7 +129,7 @@ public class AndroidAutoMessagingService extends Service {
 
     private Action createMarkAsReadAction(String conversationId){
 
-        return Action.Builder(R.drawable.mark_as_read, "Mark as Read", markAsReadPendingIntent(conversationId))
+        return Action.Builder(R.drawable.mark_as_read, "Mark as Read", markAsReadPendingIntent(conversationId, 1))
                                 .setSemanticAction(Action.SEMANTIC_ACTION_MARK_AS_READ)
                                 .setShowsUserInterface(false)
                                 .build();
