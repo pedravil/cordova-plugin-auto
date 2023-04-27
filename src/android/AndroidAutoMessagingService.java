@@ -4,8 +4,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
-//import android.app.Notification.Action;
-//import android.app.RemoteInput;
+import android.app.Person;
 
 import android.content.Intent;
 
@@ -146,18 +145,18 @@ public class AndroidAutoMessagingService extends Service {
 
     private MessagingStyle createMessagingStyle(){
 
-        Person devicePerson = Person.Builder()
-                                // The display name (also the name that's read aloud in Android auto).
-                                .setName("Device Person")
+        Person devicePerson = new Person.Builder()
+                                    // The display name (also the name that's read aloud in Android auto).
+                                    .setName("Device Person")
 
-                                // The icon to show in the notification shade in the system UI (outside
-                                // of Android Auto).
-                                //.setIcon(appDeviceUser.icon)
+                                    // The icon to show in the notification shade in the system UI (outside
+                                    // of Android Auto).
+                                    //.setIcon(appDeviceUser.icon)
 
-                                // A unique key in case there are multiple people in this conversation with
-                                // the same name.
-                                .setKey("Device Person Key")
-                                .build();
+                                    // A unique key in case there are multiple people in this conversation with
+                                    // the same name.
+                                    .setKey("Device Person Key")
+                                    .build();
         
         MessagingStyle messagingStyle = MessagingStyle(devicePerson);
 
