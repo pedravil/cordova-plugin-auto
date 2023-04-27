@@ -91,11 +91,11 @@ public class AndroidAutoMessagingService extends Service {
 
     }
 
-    private PendingIntent replyPendingIntent(String conversationId){
+    private PendingIntent replyPendingIntent(String conversationId, int requestCode){
 
          // Building a Pending Intent for the reply action to trigger
          return PendingIntent.getBroadcast(getApplicationContext(),
-                                            conversationId,
+                                            requestCode,
                                             createIntent(conversationId, REPLY_ACTION),
                                             PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
@@ -113,7 +113,7 @@ public class AndroidAutoMessagingService extends Service {
 
     private Action createReplyAction(String conversationId){
 
-        return Action.Builder(R.drawable.reply, "Reply", replyPendingIntent(conversationId))
+        return Action.Builder(R.drawable.reply, "Reply", replyPendingIntent(conversationId, 1))
                                 // Provides context to what firing the Action does.
                                 .setSemanticAction(Action.SEMANTIC_ACTION_REPLY)
 
