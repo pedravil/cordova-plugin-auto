@@ -15,6 +15,7 @@ import android.os.Messenger;
 import android.os.Bundle;
 
 import android.graphics.BitmapFactory;
+import android.content.res.Resources;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationCompat.Action;
