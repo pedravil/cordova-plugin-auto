@@ -164,7 +164,7 @@ public class AndroidAutoMessagingService extends Service {
                                     .build();
     
         
-        MessagingStyle messagingStyle = new Notification.MessagingStyle("reply name")
+        MessagingStyle messagingStyle = new NotificationCompat.MessagingStyle("reply name")
 
         //MessagingStyle messagingStyle = new MessagingStyle(devicePerson)
 
