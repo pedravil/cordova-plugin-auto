@@ -144,7 +144,7 @@ public class AndroidAutoMessagingService extends Service {
 
     private MessagingStyle createMessagingStyle(){
 
-        Person devicePerson = new Person.Builder()
+        Person devicePerson = Person.Builder()
                                     // The display name (also the name that's read aloud in Android auto).
                                     .setName("Device Person")
 
