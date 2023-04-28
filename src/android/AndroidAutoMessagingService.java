@@ -176,9 +176,7 @@ public class AndroidAutoMessagingService extends Service {
                                             .setConversationTitle("Conversation Title")
     
                                             // Group conversation means there is more than 1 recipient, so set it as such.
-                                            .setGroupConversation(false)
-
-                                            .addMessage("Message Body", System.currentTimeMillis(), senderPerson);
+                                            .setGroupConversation(false);
     
         return messagingStyle;
 
