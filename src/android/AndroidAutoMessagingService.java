@@ -196,7 +196,7 @@ public class AndroidAutoMessagingService extends Service {
         String channelId = this.getStringResource("default_aa_notification_channel_id");
         String channelName = this.getStringResource("default_aa_notification_channel_name");
 
-        NotificationCompat.Builder builder = NotificationCompat.Builder(getApplicationContext(), channelId)
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), channelId)
                 // Set the application notification icon:
                 .setSmallIcon(getApplicationInfo().icon)
 
@@ -213,9 +213,7 @@ public class AndroidAutoMessagingService extends Service {
                 // in the Android UI but the app satisfies Android Auto's
                 // mark-as-read Action requirement. Both required actions can be made
                 // visible or invisible; it is a stylistic choice.
-                .addInvisibleAction(markAsReadAction)
-
-                .build();
+                .addInvisibleAction(markAsReadAction);
         
         // Since android Oreo notification channel is needed.
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
