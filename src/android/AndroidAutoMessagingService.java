@@ -161,8 +161,6 @@ public class AndroidAutoMessagingService extends Service {
                                             // Group conversation means there is more than 1 recipient, so set it as such.
                                             .setGroupConversation(false)
 
-                                            .setAutoCancel(true)
-
                                             .addMessage("What's up?", System.currentTimeMillis(), "Coworker");
     
         return messagingStyle;
@@ -197,7 +195,9 @@ public class AndroidAutoMessagingService extends Service {
                 // in the Android UI but the app satisfies Android Auto's
                 // mark-as-read Action requirement. Both required actions can be made
                 // visible or invisible; it is a stylistic choice.
-                .addInvisibleAction(markAsReadAction);
+                .addInvisibleAction(markAsReadAction)
+                
+                .setAutoCancel(true);
         
         // Since android Oreo notification channel is needed.
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
