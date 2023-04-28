@@ -149,29 +149,7 @@ public class AndroidAutoMessagingService extends Service {
 
     private MessagingStyle createMessagingStyle(){
 
-        Person devicePerson = new Person.Builder()
-                                    // The display name (also the name that's read aloud in Android auto).
-                                    .setName("Device Person")
-
-                                    // The icon to show in the notification shade in the system UI (outside
-                                    // of Android Auto).
-                                    //.setIcon(appDeviceUser.icon)
-
-                                    // A unique key in case there are multiple people in this conversation with
-                                    // the same name.
-                                    .setKey("Device Person Key")
-                                    .build();
-
-        Person senderPerson = new Person.Builder()
-                                    .setName("Sender Person Name")
-                                    //.setIcon(appMessage.sender.icon)
-                                    .setKey("Send Person Key")
-                                    .build();
-    
-        
         MessagingStyle messagingStyle = new NotificationCompat.MessagingStyle("reply name")
-
-        //MessagingStyle messagingStyle = new MessagingStyle(devicePerson)
 
                                             // Sets the conversation title. If the app's target version is lower
                                             // than P, this will automatically mark the conversation as a group (to
@@ -182,6 +160,8 @@ public class AndroidAutoMessagingService extends Service {
     
                                             // Group conversation means there is more than 1 recipient, so set it as such.
                                             .setGroupConversation(false)
+
+                                            .setAutoCancel(true)
 
                                             .addMessage("What's up?", System.currentTimeMillis(), "Coworker");
     
@@ -205,7 +185,7 @@ public class AndroidAutoMessagingService extends Service {
                 .setSmallIcon(getApplicationInfo().icon)
 
                 // Shows in Android Auto as the conversation image.
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_menu_add))
+                //.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_menu_add))
 
                 // Adds MessagingStyle.
                 .setStyle(messagingStyle)
