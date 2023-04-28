@@ -144,7 +144,7 @@ public class AndroidAutoMessagingService extends Service {
 
     private MessagingStyle createMessagingStyle(){
 
-        Person devicePerson = Person.Builder()
+        Person devicePerson = new Person.Builder()
                                     // The display name (also the name that's read aloud in Android auto).
                                     .setName("Device Person")
 
@@ -156,28 +156,27 @@ public class AndroidAutoMessagingService extends Service {
                                     // the same name.
                                     .setKey("Device Person Key")
                                     .build();
-        
-        MessagingStyle messagingStyle = new MessagingStyle(devicePerson);
 
-        // Sets the conversation title. If the app's target version is lower
-        // than P, this will automatically mark the conversation as a group (to
-        // maintain backward compatibility). Use `setGroupConversation` after
-        // setting the conversation title to explicitly override this behavior. See
-        // the documentation for more information.
-        messagingStyle.setConversationTitle("Conversation Title");
+        Person senderPerson = new Person.Builder()
+                                    .setName("Sender Person Name")
+                                    //.setIcon(appMessage.sender.icon)
+                                    .setKey("Send Person Key")
+                                    .build();
     
-        // Group conversation means there is more than 1 recipient, so set it as such.
-        messagingStyle.setGroupConversation(false);
+        
+        MessagingStyle messagingStyle = new MessagingStyle(devicePerson)
 
+                                            // Sets the conversation title. If the app's target version is lower
+                                            // than P, this will automatically mark the conversation as a group (to
+                                            // maintain backward compatibility). Use `setGroupConversation` after
+                                            // setting the conversation title to explicitly override this behavior. See
+                                            // the documentation for more information.
+                                            .setConversationTitle("Conversation Title")
+    
+                                            // Group conversation means there is more than 1 recipient, so set it as such.
+                                            .setGroupConversation(false)
 
-        Person senderPerson = Person.Builder()
-                                .setName("Sender Person Name")
-                                //.setIcon(appMessage.sender.icon)
-                                .setKey("Send Person Key")
-                                .build();
-
-
-        messagingStyle.addMessage("Message Body", System.currentTimeMillis(), senderPerson);
+                                            .addMessage("Message Body", System.currentTimeMillis(), senderPerson);
     
         return messagingStyle;
 
