@@ -102,7 +102,7 @@ public class AndroidAutoMessagingService extends Service {
          return PendingIntent.getBroadcast(getApplicationContext(),
                                             requestCode,
                                             createIntent(conversationId, REPLY_ACTION),
-                                            PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+                                            PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_MUTABLE);
 
     }
 
