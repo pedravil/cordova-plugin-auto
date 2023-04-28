@@ -164,7 +164,9 @@ public class AndroidAutoMessagingService extends Service {
                                     .build();
     
         
-        MessagingStyle messagingStyle = new MessagingStyle(devicePerson)
+        MessagingStyle messagingStyle = new Notification.MessagingStyle("reply name")
+
+        //MessagingStyle messagingStyle = new MessagingStyle(devicePerson)
 
                                             // Sets the conversation title. If the app's target version is lower
                                             // than P, this will automatically mark the conversation as a group (to
