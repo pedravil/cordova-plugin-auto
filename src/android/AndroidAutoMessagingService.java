@@ -28,6 +28,7 @@ import androidx.core.app.RemoteInput;
 import android.R;
 
 import java.util.List;
+import android.util.Log;
 
 
 public class AndroidAutoMessagingService extends Service {
@@ -187,10 +188,20 @@ public class AndroidAutoMessagingService extends Service {
 
     private void sendNotification(String conversationId, String message, String participant, long timestamp) {
         
+        Log.wtf(TAG, "In sendNotification");
 
         Action replyAction = createReplyAction(conversationId);
+
+        Log.wtf(TAG, "After createReplyAction");
+
         Action markAsReadAction = createMarkAsReadAction(conversationId);
+
+        Log.wtf(TAG, "After createMarkAsReadAction");
+
         MessagingStyle messagingStyle = createMessagingStyle();
+
+
+        Log.wtf(TAG, "After createMessagingStyle");
         
 
         String channelId = this.getStringResource("default_aa_notification_channel_id");
