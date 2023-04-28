@@ -16,9 +16,9 @@ import android.os.Bundle;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationCompat.Action;
+import androidx.core.app.Notification.MessagingStyle;
 import androidx.core.app.NotificationCompat.CarExtender;
 import androidx.core.app.NotificationCompat.CarExtender.UnreadConversation;
-import androidx.core.app.NotificationCompat.Style;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.app.RemoteInput;
 
@@ -157,7 +157,7 @@ public class AndroidAutoMessagingService extends Service {
                                     .setKey("Device Person Key")
                                     .build();
         
-        MessagingStyle messagingStyle = MessagingStyle(devicePerson);
+        MessagingStyle messagingStyle = new MessagingStyle(devicePerson);
 
         // Sets the conversation title. If the app's target version is lower
         // than P, this will automatically mark the conversation as a group (to
