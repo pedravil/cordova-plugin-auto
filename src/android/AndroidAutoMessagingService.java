@@ -32,13 +32,14 @@ import android.util.Log;
 
 
 public class AndroidAutoMessagingService extends Service {
-    
+
     public static final String READ_ACTION = "com.androidauto.messaging.ACTION_MESSAGE_READ";
     public static final String REPLY_ACTION = "com.androidauto.messaging.ACTION_MESSAGE_REPLY";
     public static final String CONVERSATION_ID = "conversation_id";
     public static final String EXTRA_VOICE_REPLY = "extra_voice_reply";
     
-    private static final String TAG = AndroidAutoMessagingService.class.getSimpleName();
+    private final static boolean DEBUG = true;
+	private static final String TAG = AndroidAutoMessagingService.class.getSimpleName();
     private final Messenger mMessenger = new Messenger(new IncomingHandler());
     private NotificationManagerCompat mNotificationManager;
     
@@ -48,9 +49,9 @@ public class AndroidAutoMessagingService extends Service {
     class IncomingHandler extends Handler {
         
         @Override
-        public void handleMessage(Message msg) {
+        public void handleMessage(Message message) {
             
-            Bundle data = msg.getData();
+            Bundle data = message.getData();
             String dataString = data.getString("MyString");
             
             sendNotification("1", dataString, "John Doe", System.currentTimeMillis());
@@ -190,21 +191,11 @@ public class AndroidAutoMessagingService extends Service {
 
     private void sendNotification(String conversationId, String message, String participant, long timestamp) {
         
-        Log.wtf(TAG, "In sendNotification");
-
         Action replyAction = createReplyAction(conversationId);
-
-        Log.wtf(TAG, "After createReplyAction");
 
         Action markAsReadAction = createMarkAsReadAction(conversationId);
 
-        Log.wtf(TAG, "After createMarkAsReadAction");
-
         MessagingStyle messagingStyle = createMessagingStyle();
-
-
-        Log.wtf(TAG, "After createMessagingStyle");
-        
 
         String channelId = this.getStringResource("default_aa_notification_channel_id");
         String channelName = this.getStringResource("default_aa_notification_channel_name");

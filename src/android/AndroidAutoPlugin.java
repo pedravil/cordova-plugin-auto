@@ -34,7 +34,7 @@ import java.util.Set;
 public class AndroidAutoPlugin extends CordovaPlugin {
   
 	private final static boolean DEBUG = true;
-	private final static String DEBUG_TAG = "AndroidAutoPlugin";
+	private final static String TAG = AndroidAutoPlugin.class.getSimpleName();
 	
 	private Context pluginContext = null;
 	
@@ -42,17 +42,14 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	boolean isBound;
 	
 	
-	public AndroidAutoPlugin() {
-		
-		if (DEBUG) Log.d(DEBUG_TAG, "Constructor");
-	}
+	public AndroidAutoPlugin() {}
 	
 	
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
 		
-		if (DEBUG) Log.d(DEBUG_TAG, "Method: execute: " + action);
+		if (DEBUG) Log.d(TAG, "Method: execute: " + action);
 		
 		if (action.equals("initialize")) {
 			this.initialize(callbackContext);
@@ -76,7 +73,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 		
 		public void onServiceConnected(ComponentName className, IBinder service) {
 			
-			if (DEBUG) Log.d(DEBUG_TAG, "Method: serviceConnection.onServiceConnected");
+			if (DEBUG) Log.d(TAG, "Method: serviceConnection.onServiceConnected");
 			
 			androidAutoMessagingService = new Messenger(service);
 			isBound = true;
@@ -84,7 +81,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 
 		public void onServiceDisconnected(ComponentName className) {
 			
-			if (DEBUG) Log.d(DEBUG_TAG, "Method: serviceConnection.onServiceDisconnected");
+			if (DEBUG) Log.d(TAG, "Method: serviceConnection.onServiceDisconnected");
 			
 			androidAutoMessagingService = null;
 			isBound = false;
@@ -93,7 +90,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	
 	private void initialize(CallbackContext callbackContext){
 	
-		if (DEBUG) Log.d(DEBUG_TAG, "Method: initialize");
+		if (DEBUG) Log.d(TAG, "Method: initialize");
 		
 		pluginContext = this.cordova.getActivity().getApplicationContext();
 		
@@ -106,9 +103,9 @@ public class AndroidAutoPlugin extends CordovaPlugin {
   
 	private void sendNotification(CallbackContext callbackContext, String conversationId, String title, String body) throws JSONException {
 		
-		if (DEBUG) Log.d(DEBUG_TAG, "Method: sendNotification");
+		if (DEBUG) Log.d(TAG, "Method: sendNotification");
 		
-		if (DEBUG) Log.d(DEBUG_TAG, "isBound: " + isBound);
+		if (DEBUG) Log.d(TAG, "isBound: " + isBound);
 		
 		if (!isBound) return;
         

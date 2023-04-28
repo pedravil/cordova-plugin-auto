@@ -14,14 +14,18 @@ import android.util.Log;
  */
 public class AndroidAutoMessagingReplyReceiver extends BroadcastReceiver {
 
-    private static final String TAG = AndroidAutoMessagingReplyReceiver.class.getSimpleName();
+    private final static boolean DEBUG = true;
+	private static final String TAG = AndroidAutoMessagingReplyReceiver.class.getSimpleName();
 
     @Override
     public void onReceive(Context context, Intent intent) {
+
+        if (DEBUG) Log.d(TAG, "Reply Receiver: onReceive");
+
         if (AndroidAutoMessagingService.REPLY_ACTION.equals(intent.getAction())) {
             int conversationId = intent.getIntExtra(AndroidAutoMessagingService.CONVERSATION_ID, -1);
             CharSequence reply = getMessageText(intent);
-            Log.d(TAG, "Got reply (" + reply + ") for ConversationId " + conversationId);
+            if (DEBUG) Log.d(TAG, "Got reply (" + reply + ") for ConversationId " + conversationId);
         }
     }
 
