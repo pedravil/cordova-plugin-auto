@@ -49,7 +49,7 @@ public class AndroidAutoMessagingService extends Service {
             Bundle data = msg.getData();
             String dataString = data.getString("MyString");
             
-            sendNotification(1, dataString, "John Doe", System.currentTimeMillis());
+            sendNotification("1", dataString, "John Doe", System.currentTimeMillis());
             
         }
     }    
@@ -182,7 +182,7 @@ public class AndroidAutoMessagingService extends Service {
 
     }
 
-    private void sendNotification(int conversationId, String message, String participant, long timestamp) {
+    private void sendNotification(String conversationId, String message, String participant, long timestamp) {
         
 
         Action replyAction = createReplyAction(conversationId);
