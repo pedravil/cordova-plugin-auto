@@ -198,7 +198,7 @@ public class AndroidAutoMessagingService extends Service {
                 .setSmallIcon(getApplicationInfo().icon)
 
                 // Shows in Android Auto as the conversation image.
-                .setLargeIcon(R.drawable.ic_menu_add)
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher))
 
                 // Adds MessagingStyle.
                 .setStyle(messagingStyle)
