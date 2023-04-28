@@ -233,6 +233,6 @@ public class AndroidAutoMessagingService extends Service {
               }
         }
         
-        mNotificationManager.notify(conversationId, builder.build());
+        mNotificationManager.notify(1, builder.build());
     }
 }
