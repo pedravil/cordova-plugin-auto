@@ -92,7 +92,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	
 		if (DEBUG) Log.d(TAG, "Method: initialize");
 		
-		pluginContext = getContext().getApplicationContext();
+		pluginContext = getApplicationContext();
 		
 		Intent intent = new Intent(pluginContext, AndroidAutoMessagingService.class);
         pluginContext.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
