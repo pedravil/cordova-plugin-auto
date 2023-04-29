@@ -98,7 +98,10 @@ public class AndroidAutoPlugin extends CordovaPlugin {
         pluginContext.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
 
 		IntentFilter filterReplyAction = new IntentFilter(AndroidAutoMessagingService.REPLY_ACTION);
+		IntentFilter filterReadAction = new IntentFilter(AndroidAutoMessagingService.READ_ACTION);
+
 		pluginContext.registerReceiver(new AndroidAutoMessagingReplyReceiver(), filterReplyAction);
+		pluginContext.registerReceiver(new AndroidAutoMessagingReadReceiver(), filterReadAction);
 	
 	}
 	

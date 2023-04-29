@@ -42,7 +42,7 @@
       
         <service android:name="com.androidauto.messaging.AndroidAutoMessagingService" android:exported="true" android:enabled="true"/>
 
-        <!-- <receiver
+        <receiver
             android:name="com.androidauto.messaging.AndroidAutoMessagingReadReceiver" android:exported="true">
             <intent-filter>
                 <action android:name="com.androidauto.messaging.ACTION_MESSAGE_READ" />
@@ -54,7 +54,7 @@
             <intent-filter>
                 <action android:name="com.androidauto.messaging.ACTION_MESSAGE_REPLY" />
             </intent-filter>
-        </receiver> -->
+        </receiver>
       
     </config-file>
     
