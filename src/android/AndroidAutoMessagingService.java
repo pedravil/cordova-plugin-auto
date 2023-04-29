@@ -131,6 +131,7 @@ public class AndroidAutoMessagingService extends Service {
                                             // make a system call that will add the response string into
                                             // the reply intent so it can be extracted by the messaging app.
                                             .addRemoteInput(createReplyRemoteInput())
+                                            
                                             .build();
         
         return action;

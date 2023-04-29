@@ -92,13 +92,13 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	
 		if (DEBUG) Log.d(TAG, "Method: initialize");
 		
-		pluginContext = getContext().getApplicationContext();
+		pluginContext = this.cordova.getActivity().getApplicationContext();
 		
 		Intent intent = new Intent(pluginContext, AndroidAutoMessagingService.class);
         pluginContext.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
 
-		IntentFilter filterReplyAction = new IntentFilter(AndroidAutoMessagingService.REPLY_ACTION);
-		pluginContext.registerReceiver(new AndroidAutoMessagingReplyReceiver(), filterReplyAction);
+		IntentFilter filter = new IntentFilter(AndroidAutoMessagingService.REPLY_ACTION);
+		getContext().getApplicationContext().registerReceiver(new MyReceiver(), filter);
 	
 	}
 	
