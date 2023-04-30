@@ -13,10 +13,17 @@ public class AndroidAutoMessagingReadReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+
+        f (DEBUG) Log.d(TAG, "Read Receiver: onReceive");
+
         if (AndroidAutoMessagingService.READ_ACTION.equals(intent.getAction())) {
-            int conversationId = intent.getIntExtra(AndroidAutoMessagingService.CONVERSATION_ID, -1);
-            if (conversationId != -1) {
+
+            String conversationId = intent.getIntExtra(AndroidAutoMessagingService.CONVERSATION_ID, "-1");
+            
+            if (conversationId != "-1") {
+
                 Log.d(TAG, "Conversation " + conversationId + " was read");
+
                 NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
                 notificationManager.cancel(conversationId);
             }
