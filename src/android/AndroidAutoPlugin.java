@@ -107,7 +107,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	}
 	
   
-	private void sendNotification(CallbackContext callbackContext, String conversationId, String title, String body) throws JSONException {
+	private void sendNotification(CallbackContext callbackContext, int conversationId, String title, String body) throws JSONException {
 		
 		if (DEBUG) Log.d(TAG, "Method: sendNotification");
 		
@@ -115,7 +115,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 		
 		if (!isBound) return;
         
-        	Message message = Message.obtain();
+        Message message = Message.obtain();
         
 		Bundle bundle = new Bundle();
 		bundle.putString("MyString", "This is a message");

@@ -54,7 +54,7 @@ public class AndroidAutoMessagingService extends Service {
             Bundle data = message.getData();
             String dataString = data.getString("MyString");
             
-            sendNotification("1", dataString, "John Doe", System.currentTimeMillis());
+            sendNotification( 1, dataString, "John Doe", System.currentTimeMillis());
             
         }
     }    
@@ -97,7 +97,7 @@ public class AndroidAutoMessagingService extends Service {
 
     }
 
-    private PendingIntent replyPendingIntent(String conversationId, int requestCode){
+    private PendingIntent replyPendingIntent(int conversationId, int requestCode){
 
          // Building a Pending Intent for the reply action to trigger
          return PendingIntent.getBroadcast(getApplicationContext(),
@@ -107,7 +107,7 @@ public class AndroidAutoMessagingService extends Service {
 
     }
 
-    private PendingIntent markAsReadPendingIntent(String conversationId, int requestCode){
+    private PendingIntent markAsReadPendingIntent(int conversationId, int requestCode){
 
          // A pending Intent for reads
          return PendingIntent.getBroadcast(getApplicationContext(),
@@ -137,7 +137,7 @@ public class AndroidAutoMessagingService extends Service {
         return action;
     }
 
-    private Action createMarkAsReadAction(String conversationId){
+    private Action createMarkAsReadAction(int conversationId) {
 
         Action action = new Action.Builder(R.drawable.ic_secure, "Mark as Read", markAsReadPendingIntent(conversationId, 1))
                                     .setSemanticAction(Action.SEMANTIC_ACTION_MARK_AS_READ)
@@ -168,7 +168,7 @@ public class AndroidAutoMessagingService extends Service {
 
     }
 
-    private void sendNotification(String conversationId, String message, String participant, long timestamp) {
+    private void sendNotification(int conversationId, String message, String participant, long timestamp) {
         
         Action replyAction = createReplyAction(conversationId);
 

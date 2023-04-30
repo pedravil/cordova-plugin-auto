@@ -20,14 +20,15 @@ public class AndroidAutoMessagingReadReceiver extends BroadcastReceiver {
 
         if (AndroidAutoMessagingService.READ_ACTION.equals(intent.getAction())) {
 
-            String conversationId = intent.getStringExtra(AndroidAutoMessagingService.CONVERSATION_ID);
+            int conversationId = intent.getIntExtra(AndroidAutoMessagingService.CONVERSATION_ID, -1);
             
-            if (conversationId != "-1") {
+            if (conversationId != -1) {
 
                 Log.d(TAG, "Conversation " + conversationId + " was read");
 
                 NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
                 notificationManager.cancel(conversationId);
+                
             }
         }
     }

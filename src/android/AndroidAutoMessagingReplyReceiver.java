@@ -24,7 +24,7 @@ public class AndroidAutoMessagingReplyReceiver extends BroadcastReceiver {
 
         if (AndroidAutoMessagingService.REPLY_ACTION.equals(intent.getAction())) {
 
-            String conversationId = intent.getStringExtra(AndroidAutoMessagingService.CONVERSATION_ID);
+            int conversationId = intent.getIntExtra(AndroidAutoMessagingService.CONVERSATION_ID, -1);
 
             CharSequence reply = getMessageText(intent);
             
@@ -38,10 +38,13 @@ public class AndroidAutoMessagingReplyReceiver extends BroadcastReceiver {
      * the RemoteInput.
      */
     private CharSequence getMessageText(Intent intent) {
+
         Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);
         if (remoteInput != null) {
             return remoteInput.getCharSequence(AndroidAutoMessagingService.EXTRA_VOICE_REPLY);
         }
+        
         return null;
+
     }
 }
