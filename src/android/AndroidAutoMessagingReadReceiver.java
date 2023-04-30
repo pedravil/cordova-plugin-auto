@@ -20,7 +20,7 @@ public class AndroidAutoMessagingReadReceiver extends BroadcastReceiver {
 
         if (AndroidAutoMessagingService.READ_ACTION.equals(intent.getAction())) {
 
-            String conversationId = intent.getStringExtra(AndroidAutoMessagingService.CONVERSATION_ID, "-1");
+            String conversationId = intent.getStringExtra(AndroidAutoMessagingService.CONVERSATION_ID);
             
             if (conversationId != "-1") {
 

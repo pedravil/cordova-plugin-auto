@@ -24,8 +24,8 @@ public class AndroidAutoMessagingReplyReceiver extends BroadcastReceiver {
 
         if (AndroidAutoMessagingService.REPLY_ACTION.equals(intent.getAction())) {
 
-            String conversationId = intent.getStringExtra(AndroidAutoMessagingService.CONVERSATION_ID, "-1");
-            
+            String conversationId = intent.getStringExtra(AndroidAutoMessagingService.CONVERSATION_ID);
+
             CharSequence reply = getMessageText(intent);
             
             if (DEBUG) Log.d(TAG, "Got reply (" + reply + ") for ConversationId " + conversationId);
