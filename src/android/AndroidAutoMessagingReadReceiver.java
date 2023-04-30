@@ -9,6 +9,8 @@ import androidx.core.app.NotificationManagerCompat;
 import android.util.Log;
 
 public class AndroidAutoMessagingReadReceiver extends BroadcastReceiver {
+
+    private final static boolean DEBUG = true;
     private static final String TAG = AndroidAutoMessagingReadReceiver.class.getSimpleName();
 
     @Override
