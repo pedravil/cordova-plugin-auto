@@ -14,7 +14,7 @@ public class AndroidAutoMessagingReadReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        f (DEBUG) Log.d(TAG, "Read Receiver: onReceive");
+        if (DEBUG) Log.d(TAG, "Read Receiver: onReceive");
 
         if (AndroidAutoMessagingService.READ_ACTION.equals(intent.getAction())) {
 
