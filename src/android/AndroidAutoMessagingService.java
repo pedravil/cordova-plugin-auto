@@ -52,10 +52,12 @@ public class AndroidAutoMessagingService extends Service {
         @Override
         public void handleMessage(Message message) {
             
+            if (DEBUG) Log.d(TAG, "handleMessage");
+
             Bundle data = message.getData();
             String dataString = data.getString("MyString");
             
-            sendNotification( 1, dataString, "John Doe", System.currentTimeMillis());
+            sendNotification(1, dataString, "John Doe", System.currentTimeMillis());
             
         }
     }    
