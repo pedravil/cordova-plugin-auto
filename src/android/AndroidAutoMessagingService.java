@@ -117,7 +117,7 @@ public class AndroidAutoMessagingService extends Service {
 
     }
 
-    private Action createReplyAction(String conversationId){
+    private Action createReplyAction(int conversationId){
 
         
         Action action = new Action.Builder(R.drawable.ic_menu_add, "Reply", replyPendingIntent(conversationId, 1))
