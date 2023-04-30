@@ -40,6 +40,7 @@ public class AndroidAutoMessagingService extends Service {
     
     private final static boolean DEBUG = true;
 	private static final String TAG = AndroidAutoMessagingService.class.getSimpleName();
+
     private final Messenger mMessenger = new Messenger(new IncomingHandler());
     private NotificationManagerCompat mNotificationManager;
     
@@ -170,11 +171,20 @@ public class AndroidAutoMessagingService extends Service {
 
     private void sendNotification(int conversationId, String message, String participant, long timestamp) {
         
+        if (DEBUG) Log.d(TAG, "sendNotification Init");
+        
         Action replyAction = createReplyAction(conversationId);
+
+        if (DEBUG) Log.d(TAG, "createReplyAction");
 
         Action markAsReadAction = createMarkAsReadAction(conversationId);
 
+        if (DEBUG) Log.d(TAG, "createMarkAsReadAction");
+
         MessagingStyle messagingStyle = createMessagingStyle();
+
+        if (DEBUG) Log.d(TAG, "createMessagingStyle");
+
 
         String channelId = this.getStringResource("default_aa_notification_channel_id");
         String channelName = this.getStringResource("default_aa_notification_channel_name");
@@ -200,6 +210,8 @@ public class AndroidAutoMessagingService extends Service {
                 
                 .setAutoCancel(true);
         
+        if (DEBUG) Log.d(TAG, "builder");
+
         // Since android Oreo notification channel is needed.
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
               List<NotificationChannel> channels = mNotificationManager.getNotificationChannels();
@@ -217,7 +229,7 @@ public class AndroidAutoMessagingService extends Service {
                     mNotificationManager.createNotificationChannel(channel);
               }
         }
-        
+
         mNotificationManager.notify(1, builder.build());
     }
 }
