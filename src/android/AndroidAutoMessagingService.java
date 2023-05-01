@@ -50,7 +50,7 @@ public class AndroidAutoMessagingService extends Service {
     class IncomingHandler extends Handler {
         
         @Override
-        public void handleMessage(Message message) {
+        public void handleMessage(CallbackContext callbackContext, Message message) {
             
             if (DEBUG) Log.d(TAG, "handleMessage");
 
@@ -140,7 +140,7 @@ public class AndroidAutoMessagingService extends Service {
         return action;
     }
 
-    private Action createMarkAsReadAction(int conversationId) {
+    private Action createMarkAsReadAction(int conversationId){
 
         Action action = new Action.Builder(R.drawable.ic_secure, "Mark as Read", markAsReadPendingIntent(conversationId, 1))
                                     .setSemanticAction(Action.SEMANTIC_ACTION_MARK_AS_READ)
@@ -173,20 +173,11 @@ public class AndroidAutoMessagingService extends Service {
 
     private void sendNotification(int conversationId, String message, String participant, long timestamp) {
         
-        if (DEBUG) Log.d(TAG, "sendNotification Init");
-        
         Action replyAction = createReplyAction(conversationId);
-
-        if (DEBUG) Log.d(TAG, "createReplyAction");
 
         Action markAsReadAction = createMarkAsReadAction(conversationId);
 
-        if (DEBUG) Log.d(TAG, "createMarkAsReadAction");
-
         MessagingStyle messagingStyle = createMessagingStyle();
-
-        if (DEBUG) Log.d(TAG, "createMessagingStyle");
-
 
         String channelId = this.getStringResource("default_aa_notification_channel_id");
         String channelName = this.getStringResource("default_aa_notification_channel_name");
