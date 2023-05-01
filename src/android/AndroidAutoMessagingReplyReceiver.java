@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.core.app.RemoteInput;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.util.Log;
 
