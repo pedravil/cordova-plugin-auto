@@ -29,6 +29,9 @@ public class AndroidAutoMessagingReplyReceiver extends BroadcastReceiver {
             CharSequence reply = getMessageText(intent);
             
             if (DEBUG) Log.d(TAG, "Got reply (" + reply + ") for ConversationId " + conversationId);
+
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+            notificationManager.cancel(conversationId);
         }
     }
 
@@ -43,7 +46,7 @@ public class AndroidAutoMessagingReplyReceiver extends BroadcastReceiver {
         if (remoteInput != null) {
             return remoteInput.getCharSequence(AndroidAutoMessagingService.EXTRA_VOICE_REPLY);
         }
-        
+
         return null;
 
     }
