@@ -50,7 +50,7 @@ public class AndroidAutoMessagingService extends Service {
     class IncomingHandler extends Handler {
         
         @Override
-        public void handleMessage(CallbackContext callbackContext, Message message) {
+        public void handleMessage(Message message) {
             
             if (DEBUG) Log.d(TAG, "handleMessage");
 
