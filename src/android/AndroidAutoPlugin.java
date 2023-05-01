@@ -124,7 +124,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 
 		try {
 
-			androidAutoMessagingService.send(message);
+			androidAutoMessagingService.send(callbackContext, message);
 
 		} catch (RemoteException e) {
 		    e.printStackTrace();
