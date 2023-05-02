@@ -101,13 +101,13 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 		IntentFilter filterReplyAction = new IntentFilter(AndroidAutoMessagingService.REPLY_ACTION);
 		IntentFilter filterReadAction = new IntentFilter(AndroidAutoMessagingService.READ_ACTION);
 
-		pluginContext.registerReceiver(new AndroidAutoMessagingReplyReceiver(), filterReplyAction);
+		pluginContext.registerReceiver(new AndroidAutoMessagingReplyReceiver(callbackContext), filterReplyAction);
 		pluginContext.registerReceiver(new AndroidAutoMessagingReadReceiver(), filterReadAction);
 	
 	}
 	
   
-	private void sendNotification(CallbackContext callbackContext, int conversationId, String title, String body) throws JSONException {
+	private void sendNotification(CallbackContext callbackContext,  int conversationId, String title, String body) throws JSONException {
 		
 		if (DEBUG) Log.d(TAG, "Method: sendNotification");
 		

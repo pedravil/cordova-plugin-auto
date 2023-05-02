@@ -15,8 +15,16 @@ import android.util.Log;
  */
 public class AndroidAutoMessagingReplyReceiver extends BroadcastReceiver {
 
+    private CallbackContext callbackContext;
+
     private final static boolean DEBUG = true;
 	private static final String TAG = AndroidAutoMessagingReplyReceiver.class.getSimpleName();
+
+    public AndroidAutoMessagingReplyReceiver(ContextCall callbackContext) {
+
+        this.callbackContext = callbackContext;
+
+    }
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -33,6 +41,8 @@ public class AndroidAutoMessagingReplyReceiver extends BroadcastReceiver {
 
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
             notificationManager.cancel(conversationId);
+
+            this.callbackContext.success(reply);
         }
     }
 
