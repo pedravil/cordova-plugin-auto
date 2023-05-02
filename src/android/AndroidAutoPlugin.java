@@ -53,7 +53,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 		if (DEBUG) Log.d(TAG, "Method: execute: " + action);
 		
 		if (action.equals("initialize")) {
-			this.initialize(callbackContext);
+			this.initialize();
 			return true;
 		}
 		
@@ -62,10 +62,10 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 			return true;
 		}
 		
-		if (action.equals("waitAnswer")) {
-			this.waitAnswer(callbackContext);
-			return true;
-		}
+		// if (action.equals("waitAnswer")) {
+		// 	this.waitAnswer(callbackContext);
+		// 	return true;
+		// }
 		
 		return false;
 	}
@@ -89,7 +89,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 		}
 	};
 	
-	private void initialize(CallbackContext callbackContext){
+	private void initialize(){
 	
 		if (DEBUG) Log.d(TAG, "Method: initialize");
 		
