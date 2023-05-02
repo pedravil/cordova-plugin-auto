@@ -8,6 +8,8 @@ import android.os.Bundle;
 import androidx.core.app.RemoteInput;
 import androidx.core.app.NotificationManagerCompat;
 
+import org.apache.cordova.CallbackContext;
+
 import android.util.Log;
 
 /**
