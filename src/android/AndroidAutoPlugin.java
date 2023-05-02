@@ -97,12 +97,6 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 		
 		Intent intent = new Intent(pluginContext, AndroidAutoMessagingService.class);
         pluginContext.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
-
-		IntentFilter filterReplyAction = new IntentFilter(AndroidAutoMessagingService.REPLY_ACTION);
-		IntentFilter filterReadAction = new IntentFilter(AndroidAutoMessagingService.READ_ACTION);
-
-		pluginContext.registerReceiver(new AndroidAutoMessagingReplyReceiver(callbackContext), filterReplyAction);
-		pluginContext.registerReceiver(new AndroidAutoMessagingReadReceiver(), filterReadAction);
 	
 	}
 	
@@ -114,6 +108,12 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 		if (DEBUG) Log.d(TAG, "isBound: " + isBound);
 		
 		if (!isBound) return;
+
+		IntentFilter filterReplyAction = new IntentFilter(AndroidAutoMessagingService.REPLY_ACTION);
+		IntentFilter filterReadAction = new IntentFilter(AndroidAutoMessagingService.READ_ACTION);
+
+		pluginContext.registerReceiver(new AndroidAutoMessagingReplyReceiver(callbackContext), filterReplyAction);
+		pluginContext.registerReceiver(new AndroidAutoMessagingReadReceiver(), filterReadAction);
         
         Message message = Message.obtain();
         
