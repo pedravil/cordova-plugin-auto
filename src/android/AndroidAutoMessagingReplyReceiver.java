@@ -44,7 +44,7 @@ public class AndroidAutoMessagingReplyReceiver extends BroadcastReceiver {
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
             notificationManager.cancel(conversationId);
 
-            this.callbackContext.success(reply);
+            this.callbackContext.success(reply.toString());
         }
     }
 
