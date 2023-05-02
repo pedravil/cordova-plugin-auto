@@ -22,7 +22,7 @@ public class AndroidAutoMessagingReplyReceiver extends BroadcastReceiver {
     private final static boolean DEBUG = true;
 	private static final String TAG = AndroidAutoMessagingReplyReceiver.class.getSimpleName();
 
-    public AndroidAutoMessagingReplyReceiver(ContextCall callbackContext) {
+    public AndroidAutoMessagingReplyReceiver(CallbackContext callbackContext) {
 
         this.callbackContext = callbackContext;
 
