@@ -151,7 +151,7 @@ public class AndroidAutoMessagingService extends Service {
         return action;
     }
 
-    private MessagingStyle createMessagingStyle(){
+    private MessagingStyle createMessagingStyle(String from, String title, String message, long timestamp){
 
         MessagingStyle messagingStyle = new NotificationCompat.MessagingStyle("reply name")
 
@@ -160,12 +160,12 @@ public class AndroidAutoMessagingService extends Service {
                                             // maintain backward compatibility). Use `setGroupConversation` after
                                             // setting the conversation title to explicitly override this behavior. See
                                             // the documentation for more information.
-                                            .setConversationTitle("Conversation Title")
+                                            .setConversationTitle(title)
     
                                             // Group conversation means there is more than 1 recipient, so set it as such.
                                             .setGroupConversation(false)
 
-                                            .addMessage("What's up?", System.currentTimeMillis(), "Coworker");
+                                            .addMessage(message, timestamp, from);
     
         return messagingStyle;
 
@@ -177,7 +177,7 @@ public class AndroidAutoMessagingService extends Service {
 
         Action markAsReadAction = createMarkAsReadAction(conversationId);
 
-        MessagingStyle messagingStyle = createMessagingStyle();
+        MessagingStyle messagingStyle = createMessagingStyle(participant, "title", message, timestamp);
 
         String channelId = this.getStringResource("default_aa_notification_channel_id");
         String channelName = this.getStringResource("default_aa_notification_channel_name");

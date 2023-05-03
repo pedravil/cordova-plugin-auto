@@ -62,11 +62,6 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 			return true;
 		}
 		
-		// if (action.equals("waitAnswer")) {
-		// 	this.waitAnswer(callbackContext);
-		// 	return true;
-		// }
-		
 		return false;
 	}
 	
@@ -132,8 +127,4 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 		
 	}
   
-	private void waitAnswer(CallbackContext callbackContext) {
-		
-	}
-	
 }
