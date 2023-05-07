@@ -58,7 +58,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 		}
 		
 		if (action.equals("sendNotification")) {
-			this.sendNotification(callbackContext, Integer.parseInt(args.getString(0)), args.getString(1), args.getString(2));
+			this.sendNotification(callbackContext, Integer.parseInt(args.getString(0)), args.getString(1), args.getString(2), args.getString(3));
 			return true;
 		}
 		
