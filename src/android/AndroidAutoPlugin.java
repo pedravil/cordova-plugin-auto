@@ -114,7 +114,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
         
 		Bundle data = new Bundle();
 
-		data.putString(AndroidAutoMessagingService.CONVERSATION_ID, conversationId);
+		data.putString(AndroidAutoMessagingService.CONVERSATION_ID, String.valueOf(conversationId));
 		data.putString(AndroidAutoMessagingService.FROM, from);
 		data.putString(AndroidAutoMessagingService.TITLE, title);
 		data.putString(AndroidAutoMessagingService.BODY, body);
