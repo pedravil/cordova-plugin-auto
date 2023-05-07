@@ -169,12 +169,12 @@ public class AndroidAutoMessagingService extends Service {
                                             // maintain backward compatibility). Use `setGroupConversation` after
                                             // setting the conversation title to explicitly override this behavior. See
                                             // the documentation for more information.
-                                            .setConversationTitle(messageTitletitle)
+                                            .setConversationTitle(messageTitle)
     
                                             // Group conversation means there is more than 1 recipient, so set it as such.
                                             .setGroupConversation(false)
 
-                                            bigText(messageBody)
+                                            .bigText(messageBody)
 
                                             .addMessage(messageBody, timestamp, messageFrom);
     
