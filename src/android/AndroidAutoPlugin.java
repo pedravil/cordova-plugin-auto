@@ -104,24 +104,24 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 		
 		if (!isBound) return;
 
-		IntentFilter filterReplyAction = new IntentFilter(AndroidAutoMessagingService.REPLY_ACTION);
-		IntentFilter filterReadAction = new IntentFilter(AndroidAutoMessagingService.READ_ACTION);
-
-		pluginContext.registerReceiver(new AndroidAutoMessagingReplyReceiver(callbackContext), filterReplyAction);
-		pluginContext.registerReceiver(new AndroidAutoMessagingReadReceiver(), filterReadAction);
-        
-        Message message = Message.obtain();
-        
-		Bundle data = new Bundle();
-
-		data.putString(AndroidAutoMessagingService.CONVERSATION_ID, String.valueOf(conversationId));
-		data.putString(AndroidAutoMessagingService.FROM, from);
-		data.putString(AndroidAutoMessagingService.TITLE, title);
-		data.putString(AndroidAutoMessagingService.BODY, body);
-
-		message.setData(data);
-
 		try {
+
+			IntentFilter filterReplyAction = new IntentFilter(AndroidAutoMessagingService.REPLY_ACTION);
+			IntentFilter filterReadAction = new IntentFilter(AndroidAutoMessagingService.READ_ACTION);
+
+			pluginContext.registerReceiver(new AndroidAutoMessagingReplyReceiver(callbackContext), filterReplyAction);
+			pluginContext.registerReceiver(new AndroidAutoMessagingReadReceiver(), filterReadAction);
+			
+			Message message = Message.obtain();
+			
+			Bundle data = new Bundle();
+
+			data.putString(AndroidAutoMessagingService.CONVERSATION_ID, String.valueOf(conversationId));
+			data.putString(AndroidAutoMessagingService.FROM, from);
+			data.putString(AndroidAutoMessagingService.TITLE, title);
+			data.putString(AndroidAutoMessagingService.BODY, body);
+
+			message.setData(data);
 
 			androidAutoMessagingService.send(message);
 
