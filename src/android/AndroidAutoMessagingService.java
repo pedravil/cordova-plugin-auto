@@ -162,7 +162,7 @@ public class AndroidAutoMessagingService extends Service {
 
     private MessagingStyle createMessagingStyle(String messageFrom, String messageTitle, String messageBody, long timestamp){
 
-        MessagingStyle messagingStyle = new NotificationCompat.MessagingStyle("reply name")
+        MessagingStyle messagingStyle = new NotificationCompat.BigTextStyle("reply name")
 
                                             // Sets the conversation title. If the app's target version is lower
                                             // than P, this will automatically mark the conversation as a group (to
