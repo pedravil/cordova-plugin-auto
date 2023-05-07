@@ -35,9 +35,14 @@ public class AndroidAutoMessagingService extends Service {
 
     public static final String READ_ACTION = "com.androidauto.messaging.ACTION_MESSAGE_READ";
     public static final String REPLY_ACTION = "com.androidauto.messaging.ACTION_MESSAGE_REPLY";
-    public static final String CONVERSATION_ID = "conversation_id";
-    public static final String EXTRA_VOICE_REPLY = "extra_voice_reply";
     
+    public static final String EXTRA_VOICE_REPLY = "extra_voice_reply";
+
+    public static final String CONVERSATION_ID = "conversationId";
+    public static final String FROM = "from";
+    public static final String BODY = "body";
+    public static final String TITLE = "title";
+        
     private final static boolean DEBUG = true;
 	private static final String TAG = AndroidAutoMessagingService.class.getSimpleName();
 
@@ -55,9 +60,13 @@ public class AndroidAutoMessagingService extends Service {
             if (DEBUG) Log.d(TAG, "handleMessage");
 
             Bundle data = message.getData();
-            String dataString = data.getString("MyString");
+
+            int conversationId = Integer.parseInt(data.getString(CONVERSATION_ID));
+            String messageFrom = data.getString(FROM);
+            String messageTitle = data.getString(TITLE);
+            String messageBody = data.getString(BODY);
             
-            sendNotification(1, dataString, "John Doe", System.currentTimeMillis());
+            sendNotification(conversationId, messageFrom, messageTitle, messageBody, System.currentTimeMillis());
             
         }
     }    
@@ -151,7 +160,7 @@ public class AndroidAutoMessagingService extends Service {
         return action;
     }
 
-    private MessagingStyle createMessagingStyle(String from, String title, String message, long timestamp){
+    private MessagingStyle createMessagingStyle(String messageFrom, String messageTitle, String messageBody, long timestamp){
 
         MessagingStyle messagingStyle = new NotificationCompat.MessagingStyle("reply name")
 
@@ -160,24 +169,26 @@ public class AndroidAutoMessagingService extends Service {
                                             // maintain backward compatibility). Use `setGroupConversation` after
                                             // setting the conversation title to explicitly override this behavior. See
                                             // the documentation for more information.
-                                            .setConversationTitle(title)
+                                            .setConversationTitle(messageTitletitle)
     
                                             // Group conversation means there is more than 1 recipient, so set it as such.
                                             .setGroupConversation(false)
 
-                                            .addMessage(message, timestamp, from);
+                                            bigText(messageBody)
+
+                                            .addMessage(messageBody, timestamp, messageFrom);
     
         return messagingStyle;
 
     }
 
-    private void sendNotification(int conversationId, String message, String participant, long timestamp) {
+    private void sendNotification(int conversationId, String messageFrom, String messageTitle, String messageBody, long timestamp) {
         
         Action replyAction = createReplyAction(conversationId);
 
         Action markAsReadAction = createMarkAsReadAction(conversationId);
 
-        MessagingStyle messagingStyle = createMessagingStyle(participant, "title", message, timestamp);
+        MessagingStyle messagingStyle = createMessagingStyle(messageFrom, messageTitle, messageBody, timestamp);
 
         String channelId = this.getStringResource("default_aa_notification_channel_id");
         String channelName = this.getStringResource("default_aa_notification_channel_name");
