@@ -41,7 +41,7 @@
         <meta-data android:name="com.google.android.gms.car.application" android:resource="@xml/automotive_app_desc"/>
       
         <service android:name="com.androidauto.messaging.AndroidAutoMessagingService" android:exported="true" android:enabled="true"/>
-        <!-- <service android:name="com.androidauto.messaging.AndroidAutoFCMService" android:exported="true" android:enabled="true"/> -->
+        <service android:name="com.androidauto.messaging.AndroidAutoFCMService" android:exported="true" android:enabled="true"/>
 
     </config-file>
     
@@ -51,7 +51,7 @@
     <resource-file src="src/android/cordova-plugin-auto-strings.xml" target="res/values/cordova-plugin-auto-strings.xml" />
     
     <source-file src="src/android/AndroidAutoPlugin.java" target-dir="com/androidauto/messaging"/>
-    <!-- <source-file src="src/android/AndroidAutoFCMService.java" target-dir="com/androidauto/messaging"/> -->
+    <source-file src="src/android/AndroidAutoFCMService.java" target-dir="com/androidauto/messaging"/>
     <source-file src="src/android/AndroidAutoMessagingService.java" target-dir="com/androidauto/messaging"/>
     <source-file src="src/android/AndroidAutoMessagingReadReceiver.java" target-dir="com/androidauto/messaging"/>
     <source-file src="src/android/AndroidAutoMessagingReplyReceiver.java" target-dir="com/androidauto/messaging"/>

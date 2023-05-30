@@ -38,14 +38,15 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	private final static String TAG = AndroidAutoPlugin.class.getSimpleName();
 	
 	private Context pluginContext = null;
+	private static CallbackContext callbackContext = null;
 	
 	Messenger androidAutoMessagingService = null;
 	boolean isBound;
 	
 	
 	public AndroidAutoPlugin() {}
-	
-	
+
+		
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
@@ -53,7 +54,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 		if (DEBUG) Log.d(TAG, "Method: execute: " + action);
 		
 		if (action.equals("initialize")) {
-			this.initialize();
+			this.initialize(callbackContext);
 			return true;
 		}
 		
@@ -68,35 +69,35 @@ public class AndroidAutoPlugin extends CordovaPlugin {
   	private ServiceConnection serviceConnection = new ServiceConnection() {
 		
 		public void onServiceConnected(ComponentName className, IBinder service) {
-			
-			if (DEBUG) Log.d(TAG, "Method: serviceConnection.onServiceConnected");
-			
 			androidAutoMessagingService = new Messenger(service);
 			isBound = true;
 		}
 
 		public void onServiceDisconnected(ComponentName className) {
-			
-			if (DEBUG) Log.d(TAG, "Method: serviceConnection.onServiceDisconnected");
-			
 			androidAutoMessagingService = null;
 			isBound = false;
 		}
 	};
+
+	private void initialize(CallbackContext callbackContext) {
 	
-	private void initialize(){
-	
-		if (DEBUG) Log.d(TAG, "Method: initialize");
-		
-		pluginContext = this.cordova.getActivity().getApplicationContext();
-		
+		this.pluginContext = this.cordova.getActivity().getApplicationContext();
+		AndroidAutoPlugin.callbackContext = callbackContext;
+
 		Intent intent = new Intent(pluginContext, AndroidAutoMessagingService.class);
         pluginContext.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
 	
 	}
 	
+	public void sendNotificationFromFCM(int conversationId, String from, String title, String body) {
+
+		if (DEBUG) Log.d(TAG, "Method: sendNotificationFromFCM");
+
+
+		sendNotification(AndroidAutoPlugin.callbackContext, conversationId, from, title, body);
+	}
   
-	private void sendNotification(CallbackContext callbackContext,  int conversationId, String from, String title, String body) {
+	private void sendNotification(CallbackContext callbackContext, int conversationId, String from, String title, String body) {
 		
 		if (DEBUG) Log.d(TAG, "Method: sendNotification");
 		

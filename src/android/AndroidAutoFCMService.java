@@ -54,8 +54,7 @@ public class AndroidAutoFCMService extends FirebaseMessagingService {
         String title;
         String text;
         String id;
-        String sound = null;
-        String lights = null;
+        
         Map<String, String> data = remoteMessage.getData();
         
         if (remoteMessage.getNotification() != null) {
@@ -66,9 +65,7 @@ public class AndroidAutoFCMService extends FirebaseMessagingService {
           title = data.get("title");
           text = data.get("text");
           id = data.get("id");
-          sound = data.get("sound");
-          lights = data.get("lights"); //String containing hex ARGB color, miliseconds on, miliseconds off, example: '#FFFF00FF,1000,3000'
-
+          
           if (TextUtils.isEmpty(text)) {
             text = data.get("body");
           }
@@ -83,27 +80,17 @@ public class AndroidAutoFCMService extends FirebaseMessagingService {
           id = Integer.toString(n);
         }
 
-        String badge = data.get("badge");
-
-
         if(DEBUG){
             Log.d(TAG, "From: " + remoteMessage.getFrom());
             Log.d(TAG, "Notification Message id: " + id);
             Log.d(TAG, "Notification Message Title: " + title);
             Log.d(TAG, "Notification Message Body/Text: " + text);
-            Log.d(TAG, "Notification Message Sound: " + sound);
-            Log.d(TAG, "Notification Message Lights: " + lights);
-            Log.d(TAG, "Notification Badge: " + badge);
         }
 
-        // TODO: Add option to developer to configure if show notification when app on foreground
-        if (!TextUtils.isEmpty(text) || !TextUtils.isEmpty(title) || (!data.isEmpty())) {
-
-          boolean showNotification = (FirebasePlugin.inBackground() || !FirebasePlugin.hasNotificationsCallback()) && (!TextUtils.isEmpty(text) || !TextUtils.isEmpty(title));
-          Log.d(TAG, "showNotification: " + (showNotification ? "true" : "false"));
-          sendNotification(id, title, text, data, showNotification, sound, lights);
-          
-        }
+        
+        AndroidAutoPlugin androidAutoPlugin = new AndroidAutoPlugin();
+        androidAutoPlugin.sendNotificationFromFCM(id, title, text);
+        
     }
     
 }
