@@ -95,23 +95,24 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 
 		if (callbackContext != null && bundle != null) {
 		
-		JSONObject json = new JSONObject();
+			JSONObject json = new JSONObject();
 
-		Set<String> keys = bundle.keySet();
+			Set<String> keys = bundle.keySet();
 
-		for (String key : keys) {
-			try {
+			for (String key : keys) {
+				try {
 
-				json.put(key, bundle.get(key));
+					json.put(key, bundle.get(key));
 
-			} catch (JSONException e) { return; }
+				} catch (JSONException e) { return; }
+			}
+
+			PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, json);
+
+			pluginresult.setKeepCallback(true);
+
+			callbackContext.sendPluginResult(pluginResult);
 		}
-
-		PluginResult pluginresult = new PluginResult(PluginResult.Status.OK, json);
-
-		pluginresult.setKeepCallback(true);
-
-		callbackContext.sendPluginResult(pluginresult);
 
 	}
   
