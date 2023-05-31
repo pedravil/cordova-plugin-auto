@@ -59,10 +59,10 @@ public class AndroidAutoFCMService extends FirebaseMessagingService {
         
         if (remoteMessage.getNotification() != null) {
 
-          title = remoteMessage.getNotification().getTitle();
-          text = remoteMessage.getNotification().getBody();
-          id = remoteMessage.getMessageId();
-          
+            title = remoteMessage.getNotification().getTitle();
+            text = remoteMessage.getNotification().getBody();
+            id = remoteMessage.getMessageId();
+
         } else {
 
           title = data.get("title");
