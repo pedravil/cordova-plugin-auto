@@ -1,4 +1,3 @@
-
 package com.androidauto.messaging;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -6,11 +5,14 @@ import com.google.firebase.messaging.RemoteMessage;
 
 import android.util.Log;
 
+import android.os.Bundle;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
 import android.text.TextUtils;
+
 
 public class AndroidAutoFCMService extends FirebaseMessagingService {
 
