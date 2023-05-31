@@ -58,26 +58,24 @@ public class AndroidAutoFCMService extends FirebaseMessagingService {
         Map<String, String> data = remoteMessage.getData();
         
         if (remoteMessage.getNotification() != null) {
+
           title = remoteMessage.getNotification().getTitle();
           text = remoteMessage.getNotification().getBody();
           id = remoteMessage.getMessageId();
+          
         } else {
+
           title = data.get("title");
           text = data.get("text");
           id = data.get("id");
           
           if (TextUtils.isEmpty(text)) {
-            text = data.get("body");
+              text = data.get("body");
           }
           if (TextUtils.isEmpty(text)) {
-            text = data.get("message");
+              text = data.get("message");
           }
-        }
 
-        if (TextUtils.isEmpty(id)) {
-          Random rand = new Random();
-          int n = rand.nextInt(50) + 1;
-          id = Integer.toString(n);
         }
 
         if(DEBUG){
@@ -87,9 +85,18 @@ public class AndroidAutoFCMService extends FirebaseMessagingService {
             Log.d(TAG, "Notification Message Body/Text: " + text);
         }
 
-        
-        AndroidAutoPlugin androidAutoPlugin = new AndroidAutoPlugin();
-        androidAutoPlugin.sendNotificationFromFCM(id, title, text);
+
+        Bundle bundle = new Bundle();
+
+        for (String key : data.keySet()) {
+            bundle.putString(key, data.get(key));
+        }
+            
+        bundle.putString("title", title);
+        bundle.putString("body", text);
+
+
+        AndroidAutoPlugin.getNotificationFromFCM(bundle);
         
     }
     

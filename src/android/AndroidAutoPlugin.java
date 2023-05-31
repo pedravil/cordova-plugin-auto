@@ -89,12 +89,30 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	
 	}
 	
-	public void sendNotificationFromFCM(int conversationId, String from, String title, String body) {
+	public static void getNotificationFromFCM(Bundle bundle) {
 
-		if (DEBUG) Log.d(TAG, "Method: sendNotificationFromFCM");
+		final CallbackContext callbackContext = AndroidAutoPlugin.callbackContext;
 
+		if (callbackContext != null && bundle != null) {
+		
+		JSONObject json = new JSONObject();
 
-		sendNotification(AndroidAutoPlugin.callbackContext, conversationId, from, title, body);
+		Set<String> keys = bundle.keySet();
+
+		for (String key : keys) {
+			try {
+
+				json.put(key, bundle.get(key));
+
+			} catch (JSONException e) { return; }
+		}
+
+		PluginResult pluginresult = new PluginResult(PluginResult.Status.OK, json);
+
+		pluginresult.setKeepCallback(true);
+
+		callbackContext.sendPluginResult(pluginresult);
+
 	}
   
 	private void sendNotification(CallbackContext callbackContext, int conversationId, String from, String title, String body) {
