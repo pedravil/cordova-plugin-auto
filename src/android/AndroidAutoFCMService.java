@@ -98,7 +98,7 @@ public class AndroidAutoFCMService extends FirebaseMessagingService {
         bundle.putString("body", text);
 
 
-        AndroidAutoPlugin.getNotificationFromFCM(bundle);
+        AndroidAutoPlugin.getFCMNotification(bundle);
         
     }
     

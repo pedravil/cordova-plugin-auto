@@ -89,7 +89,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 	
 	}
 	
-	public static void getNotificationFromFCM(Bundle bundle) {
+	public static void getFCMNotification(Bundle bundle) {
 
 		final CallbackContext callbackContext = AndroidAutoPlugin.callbackContext;
 
