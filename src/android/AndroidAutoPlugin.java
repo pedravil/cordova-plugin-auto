@@ -109,7 +109,7 @@ public class AndroidAutoPlugin extends CordovaPlugin {
 
 			PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, json);
 
-			pluginresult.setKeepCallback(true);
+			pluginResult.setKeepCallback(true);
 
 			callbackContext.sendPluginResult(pluginResult);
 		}
