@@ -41,12 +41,16 @@
         <meta-data android:name="com.google.android.gms.car.application" android:resource="@xml/automotive_app_desc"/>
       
         <service android:name="com.androidauto.messaging.AndroidAutoMessagingService" android:exported="true" android:enabled="true"/>
-        <service android:name="com.androidauto.messaging.AndroidAutoFCMService" android:exported="false" android:enabled="true">
+        <service android:name="com.androidauto.messaging.AndroidAutoFCMService" android:exported="true" android:enabled="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"></action>
             </intent-filter>
         </service>
 
+        <receiver android:name="com.androidauto.messaging.AndroidAutoFCMReceiver" 
+                  android:process=":remote"
+        />
+        
     </config-file>
     
     <framework custom="true" src="src/android/auto.gradle" type="gradleReference" />
