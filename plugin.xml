@@ -43,9 +43,7 @@
         <service android:name="com.androidauto.messaging.AndroidAutoMessagingService" android:exported="true" android:enabled="true"/>
         <service android:name="com.androidauto.messaging.AndroidAutoFCMService" android:exported="false" android:enabled="true">
             <intent-filter>
-                <action 
-                      android:name="com.google.firebase.MESSAGING_EVENT">
-                 </action>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"></action>
             </intent-filter>
         </service>
 
