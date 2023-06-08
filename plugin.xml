@@ -42,6 +42,11 @@
       
         <service android:name="com.androidauto.messaging.AndroidAutoMessagingService" android:exported="true" android:enabled="true"/>
         
+	<!-- 
+		TO BE DONE: 	uncomment service and receiver declarations
+				continue developing AndroidAutoFCMService.java and AndroidAutoFCMReceiver.java
+	-->
+		
         <!-- <service android:name="com.androidauto.messaging.AndroidAutoFCMService" android:exported="true" android:enabled="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"></action>
